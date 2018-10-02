@@ -10,30 +10,30 @@ int main() { yyparse(); }
 
 %}
 
-%token IF 
+%token ABREC
+%token ABREP
 %token ELSE
-%token WHILE
-%token VARIAVEL 
-%token INTEIRO 
-%token REAL
-%token ESCREVA 
-%token LEIA
-%token OPERADORES 
-%token OPLOGICO 
-%token OPRELACIONAL 
-%token OPNEGACAO 
-%token OPATRIBUICAO
-%token ABREP 
-%token FECHAP 
-%token ABREC 
+%token ESCREVA
 %token FECHAC
-%token FUNCTION 
-%token PIPE 
-%token NOMEFUNCAO
-%token TIPO 
+%token FECHAP
 %token FIMCOMANDO
-%token QUIT 
+%token FUNCTION
+%token IF
+%token INTEIRO 
+%token LEIA
+%token NOMEFUNCAO
+%token OPATRIBUICAO
+%token OPERADORES
+%token OPLOGICO
+%token OPNEGACAO
+%token OPRELACIONAL
+%token PIPE
+%token QUIT
+%token REAL
 %token SEND
+%token TIPO
+%token VARIAVEL
+%token WHILE
 
 %%
 
