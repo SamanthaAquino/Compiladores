@@ -76,7 +76,7 @@ variavel {letra}({letra}|{numero})/*{0,7}*/
 {se}		             { printf("Comando: %s\n", yytext); return IF; }
 {senao}		             { printf("Comando: %s\n", yytext); return ELSE; }
 {variavel}               { printf("Variavel: %s\n", yytext); return VARIAVEL; }
-{numero}+ 	             { printf("Inteiro: %s\n", yytext); return INTEIRO; }
+{numero}+ 	             { printf("Numero Inteiro: %s\n", yytext); return INTEIRO; }
 {fechaC}                 { printf("Chaves: %s\n", yytext); return FECHAC; }
 
 %%
