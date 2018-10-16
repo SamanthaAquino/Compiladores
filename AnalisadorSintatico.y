@@ -15,7 +15,6 @@
 
 %token ABREC
 %token ABREP
-%token ELSE
 %token ESCREVA
 %token FECHAC
 %token FECHAP
@@ -24,7 +23,6 @@
 %token IF
 %token INTEIRO 
 %token LEIA
-%token NOMEFUNCAO
 %token OPATRIBUICAO
 %token OPDIVISAO
 %token OPLOGICO
@@ -35,96 +33,99 @@
 %token OPSOMA
 %token OPSUBTRACAO
 %token PIPE
-%token QUIT
 %token REAL
 %token SEND
-%token TIPO
 %token VARIAVEL
 %token WHILE
+%token CARACTERE
 
 %%
 
-    S:FUNCTION TIPO NOMEFUNCAO ABREP param FECHAP ABREC CORPO returrn FECHAC;
-    param:TIPO VARIAVEL
-                   | TIPO VARIAVEL PIPE param 
-                   | ;
+    S: FUNCTION tipo VARIAVEL ABREP param FECHAP ABREC corpo retorna FECHAC
 
-    CORPO: declaracao algoritmo;
+    tipo: INTEIRO
+            | REAL
+            | CARACTERE
 
-    declaracao: TIPO VARIAVEL FIMCOMANDO;
+    param:
+            | tipo VARIAVEL
+            | PIPE
 
-    algoritmo: expressao algoritmo FIMCOMANDO 
-                  | comando algoritmo FIMCOMANDO 
-                  | ;
+    corpo: declaracao
+            | algoritmo
 
-    expressao: aritmetica | logica;
+    declaracao:
+            | tipo VARIAVEL FIMCOMANDO
 
-    aritmetica: ABREP aritmetica2 FECHAP
-                  | aritmetica2;
+    algoritmo: 
+            | aritmetica
+            | condicional
+            | repeticao
+            | entrada
+            | saida
 
-    aritmetica2:  VARIAVEL OPDIVISAO VARIAVEL          {$$ = $1 / $3;}
-                  | INTEIRO OPDIVISAO VARIAVEL         {$$ = $1 / $3;}
-                  | VARIAVEL OPDIVISAO INTEIRO         {$$ = $1 / $3;}
-                  | INTEIRO OPDIVISAO INTEIRO          {$$ = $1 / $3;}
-                  | REAL OPDIVISAO VARIAVEL            {$$ = $1 / $3;}
-                  | VARIAVEL OPDIVISAO REAL            {$$ = $1 / $3;}
-                  | REAL OPDIVISAO REAL                {$$ = $1 / $3;}
-                  | VARIAVEL OPMOD VARIAVEL            {$$ = $1 % $3;}
-                  | INTEIRO OPMOD VARIAVEL             {$$ = $1 % $3;}
-                  | VARIAVEL OPMOD INTEIRO             {$$ = $1 % $3;}
-                  | INTEIRO OPMOD INTEIRO              {$$ = $1 % $3;}
-                  | REAL OPMOD VARIAVEL                {$$ = $1 % $3;}
-                  | VARIAVEL OPMOD REAL                {$$ = $1 % $3;}
-                  | REAL OPMOD REAL                    {$$ = $1 % $3;}
-                  | VARIAVEL OPMULTIPLICACAO VARIAVEL  {$$ = $1 * $3;}
-                  | INTEIRO OPMULTIPLICACAO VARIAVEL   {$$ = $1 * $3;}
-                  | VARIAVEL OPMULTIPLICACAO INTEIRO   {$$ = $1 * $3;}
-                  | INTEIRO OPMULTIPLICACAO INTEIRO    {$$ = $1 * $3;}
-                  | REAL OPMULTIPLICACAO VARIAVEL      {$$ = $1 * $3;}
-                  | VARIAVEL OPMULTIPLICACAO REAL      {$$ = $1 * $3;}
-                  | REAL OPMULTIPLICACAO REAL          {$$ = $1 * $3;}
-                  | VARIAVEL OPSOMA VARIAVEL           {$$ = $1 + $3;}
-                  | INTEIRO OPSOMA VARIAVEL            {$$ = $1 + $3;}
-                  | VARIAVEL OPSOMA INTEIRO            {$$ = $1 + $3;}
-                  | INTEIRO OPSOMA INTEIRO             {$$ = $1 + $3;}
-                  | REAL OPSOMA VARIAVEL               {$$ = $1 + $3;}
-                  | VARIAVEL OPSOMA REAL               {$$ = $1 + $3;}
-                  | REAL OPSOMA REAL                   {$$ = $1 + $3;}
-                  | VARIAVEL OPSUBTRACAO VARIAVEL      {$$ = $1 - $3;}
-                  | INTEIRO OPSUBTRACAO VARIAVEL       {$$ = $1 - $3;}
-                  | VARIAVEL OPSUBTRACAO INTEIRO       {$$ = $1 - $3;}
-                  | INTEIRO OPSUBTRACAO INTEIRO        {$$ = $1 - $3;}
-                  | REAL OPSUBTRACAO VARIAVEL          {$$ = $1 - $3;}
-                  | VARIAVEL OPSUBTRACAO REAL          {$$ = $1 - $3;}
-                  | REAL OPSUBTRACAO REAL              {$$ = $1 - $3;}
-                  | VARIAVEL                           {$$ = $1 ;}
-                  | REAL                               {$$ = $1 ;}
-                  | INTEIRO                            {$$ = $1 ;} ;
+    aritmetica: VARIAVEL OPATRIBUICAO expressao FIMCOMANDO
 
-    logica: OPNEGACAO logica | relacional | logica OPLOGICO logica;
-    // negacao : OPNEGACAO logica;
+    expressao: VARIAVEL
+            | VARIAVEL OPSOMA VARIAVEL
+            | INTEIRO OPSOMA VARIAVEL
+            | VARIAVEL OPSOMA INTEIRO
+            | REAL OPSOMA VARIAVEL
+            | VARIAVEL OPSOMA REAL
+            | INTEIRO OPSOMA INTEIRO
+            | REAL OPSOMA REAL
+            
+            | VARIAVEL OPSUBTRACAO VARIAVEL
+            | INTEIRO OPSUBTRACAO VARIAVEL
+            | VARIAVEL OPSUBTRACAO INTEIRO
+            | REAL OPSUBTRACAO VARIAVEL
+            | VARIAVEL OPSUBTRACAO REAL
+            | INTEIRO OPSUBTRACAO INTEIRO
+            | REAL OPSUBTRACAO REAL
+            
+            | VARIAVEL OPMULTIPLICACAO VARIAVEL
+            | INTEIRO OPMULTIPLICACAO VARIAVEL
+            | VARIAVEL OPMULTIPLICACAO INTEIRO
+            | REAL OPMULTIPLICACAO VARIAVEL
+            | VARIAVEL OPMULTIPLICACAO REAL
+            | INTEIRO OPMULTIPLICACAO INTEIRO
+            | REAL OPMULTIPLICACAO REAL
+            
+            | VARIAVEL OPDIVISAO VARIAVEL
+            | INTEIRO OPDIVISAO VARIAVEL
+            | VARIAVEL OPDIVISAO INTEIRO
+            | REAL OPDIVISAO VARIAVEL
+            | VARIAVEL OPDIVISAO REAL
+            | INTEIRO OPDIVISAO INTEIRO
+            | REAL OPDIVISAO REAL
+            
+            | VARIAVEL OPMOD VARIAVEL
+            | INTEIRO OPMOD VARIAVEL
+            | VARIAVEL OPMOD INTEIRO
+            | REAL OPMOD VARIAVEL
+            | VARIAVEL OPMOD REAL
+            | INTEIRO OPMOD INTEIRO
+            | REAL OPMOD REAL
 
-    relacional: aritmetica2 OPRELACIONAL aritmetica2;
+    condicional: IF ABREP compara FECHAP ABREC algoritmo FECHAC
 
-    comando: atribuicao | entrada | saida | condicional | repeticao;
+    repeticao: WHILE ABREP compara FECHAP ABREC algoritmo FECHAC
 
-    atribuicao: VARIAVEL OPATRIBUICAO expressao;
+    compara: 
+            | VARIAVEL comp VARIAVEL
+            | OPNEGACAO VARIAVEL
+            | PIPE
 
-    entrada: LEIA VARIAVEL;
+    comp: OPRELACIONAL
+            | OPLOGICO
 
-    saida: ESCREVA saida2;
-    //Apagamos mensagem vv
+    entrada: LEIA VARIAVEL FIMCOMANDO
 
-    saida2:  VARIAVEL
-                | ;
+    saida: VARIAVEL ESCREVA FIMCOMANDO
 
-    condicional: IF ABREP logica FECHAP ABREC algoritmo FECHAC
-                | IF ABREP logica FECHAP ABREC algoritmo FECHAC ELSE ABREC algoritmo FECHAC;
+    retorna: SEND VARIAVEL
+            | SEND INTEIRO
+            | SEND REAL
+            | SEND CARACTERE
 
-    repeticao: WHILE ABREP logica FECHAP ABREC algoritmo FECHAC
-                | WHILE ABREP logica FECHAP ABREC algoritmo QUIT FECHAC;
-
-    returrn: SEND aritmetica2
-                | SEND NOMEFUNCAO ABREP param FECHAP;
-    
 %%
