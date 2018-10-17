@@ -26,7 +26,6 @@
 
 %token <pont> WHILE
 %token <pont> VARIAVEL
-%token <pont> CARACTERE
 
 %token <pont> ESCREVA
 %token <pont> LEIA
@@ -76,9 +75,11 @@
 
 %%
 
-    S: FUNCTION tipo var ABREP param FECHAP ABREC corpo retorna FECHAC
+    S: funcao { root = $1; }
 
-    var: VARIAVEL                                  /* Thaty tá certo isso daqui??!?! AJUDA NOISZ */
+    funcao: FUNCTION tipo var ABREP param FECHAP ABREC corpo retorna FECHAC
+
+    var: VARIAVEL
         {
             $$ = (No*)malloc(sizeof(No));
             $$->token = VARIAVEL;
@@ -87,7 +88,7 @@
             $$->dir = NULL;
         }
 
-    tipo: TIPOINT                                  /* Thaty tá certo isso daqui??!?! AJUDA NOISZ */
+    tipo: TIPOINT
          {
             $$ = (No*)malloc(sizeof(No));
             $$->token = TIPOINT;
@@ -95,7 +96,7 @@
             $$->esq = NULL;
             $$->dir = NULL;
          }
-         | TIPOREAL                                  /* Thaty tá certo isso daqui??!?! AJUDA NOISZ */
+         | TIPOREAL
          {
             $$ = (No*)malloc(sizeof(No));
             $$->token = TIPOREAL;
@@ -103,7 +104,7 @@
             $$->esq = NULL;
             $$->dir = NULL;
          }
-         | TIPOCARACTERE                                  /* Thaty tá certo isso daqui??!?! AJUDA NOISZ */
+         | TIPOCARACTERE
          {
             $$ = (No*)malloc(sizeof(No));
             $$->token = TIPOCARACTERE;
@@ -128,7 +129,7 @@
               | entrada
               | saida
 
-    aritmetica: var OPATRIBUICAO expressao FIMCOMANDO         /* DÚVIDA Código FimComando */
+    aritmetica: var OPATRIBUICAO expressao FIMCOMANDO
     {
         $$ = (No*)malloc(sizeof(No));
         $$->token = OPATRIBUICAO;
@@ -148,17 +149,25 @@
               }
               | REAL
               {
-                  $$ = (No*)malloc(sizeof(No));            /* Thaty tá certo isso daqui??!?! AJUDA NOISZ */
-                  $$->token = REAL;                        /* Não temos certeza se 'val' de yylval.pont retorna */
-                  $$->val = yylval.pont->val;              /* números reais também */
+                  $$ = (No*)malloc(sizeof(No));
+                  $$->token = REAL;
+                  $$->val = yylval.pont->val;
                   $$->esq = NULL;
                   $$->dir = NULL;
+              }
+              | CARACTERE
+              {
+                $$ = (No*)malloc(sizeof(No));
+                $$->token = CARACTERE;
+                strcpy($$->nome, yylval.pont->nome);
+                $$->esq = NULL;
+                $$->dir = NULL;
               }
               | expressao OPSOMA expressao
               {
                   $$ = (No*)malloc(sizeof(No));
                   $$->token = OPSOMA;
-                  strcpy($$->nome, yylval.pont->nome);    // Por que a gente colocou isso aqui mesmo? ctr+c ctrl+v ?
+                  strcpy($$->nome, yylval.pont->nome);
                   $$->esq = $1;
                   $$->dir = $3;
               }
@@ -178,7 +187,7 @@
                   $$->esq = $1;
                   $$->dir = $3;
               }
-              | expressao OPDIVISAO expressao
+              | expressao "/" expressao
               {
                   $$ = (No*)malloc(sizeof(No));
                   $$->token = OPDIVISAO;
@@ -194,7 +203,7 @@
                   $$->esq = $1;
                   $$->dir = $3;
               }
-              | ABREP expressao FECHAP             /* Thaty tá certo isso daqui??!?! AJUDA NOISZ */
+              | ABREP expressao FECHAP
               {
                   $$ = (No*)malloc(sizeof(No));
                   $$ = $2;
