@@ -14,6 +14,8 @@
     int main()      { yyparse(); }
 %}
 
+No *root;
+
 %union {
     No *pont;
 }
@@ -49,6 +51,12 @@
 %token <pont> OPMENOR
 %token <pont> OPMAIOR
 %token <pont> OPDIFERENTE
+%token <pont> OPATRIBUICAO
+%token <pont> OPSUBTRACAO
+%token <pont> OPSOMA
+%token <pont> OPMULTIPLICACAO
+%token <pont> OPDIVISAO
+%token <pont> OPMOD
 
 
 %type <pont> S
@@ -78,6 +86,17 @@
     S: funcao { root = $1; }
 
     funcao: FUNCTION tipo var ABREP param FECHAP ABREC corpo retorna FECHAC
+    {
+      $$ = (No*)malloc(sizeof(No));
+      $$->token = FUNCTION;
+      //olhei no exemplo da thaty, o "for_comando", mas temos que ver se esta certo
+      $$->lookahead = $2;
+      $$->lookahead1 = $3;
+      $$->lookahead2 = $5;
+      $$->lookahead3 = $8;
+      $$->esq = $9;
+      $$->dir = NULL;
+    }
 
     var: VARIAVEL
         {
@@ -92,7 +111,6 @@
          {
             $$ = (No*)malloc(sizeof(No));
             $$->token = TIPOINT;
-            strcpy($$->nome, yylval.pont->nome);
             $$->esq = NULL;
             $$->dir = NULL;
          }
@@ -100,7 +118,6 @@
          {
             $$ = (No*)malloc(sizeof(No));
             $$->token = TIPOREAL;
-            strcpy($$->nome, yylval.pont->nome);
             $$->esq = NULL;
             $$->dir = NULL;
          }
@@ -108,7 +125,6 @@
          {
             $$ = (No*)malloc(sizeof(No));
             $$->token = TIPOCARACTERE;
-            strcpy($$->nome, yylval.pont->nome);
             $$->esq = NULL;
             $$->dir = NULL;
          }
@@ -133,7 +149,6 @@
     {
         $$ = (No*)malloc(sizeof(No));
         $$->token = OPATRIBUICAO;
-        strcpy($$->nome, yylval.pont->nome);
         $$->esq = $1;
         $$->dir = $3;
     }
@@ -143,7 +158,7 @@
               {
                   $$ = (No*)malloc(sizeof(No));
                   $$->token = INTEIRO;
-                  $$->val = yylval.pont->val;
+                  $$->tokint = yylval.pont->tokint;
                   $$->esq = NULL;
                   $$->dir = NULL;    
               }
@@ -154,14 +169,6 @@
                   $$->val = yylval.pont->val;
                   $$->esq = NULL;
                   $$->dir = NULL;
-              }
-              | CARACTERE
-              {
-                $$ = (No*)malloc(sizeof(No));
-                $$->token = CARACTERE;
-                strcpy($$->nome, yylval.pont->nome);
-                $$->esq = NULL;
-                $$->dir = NULL;
               }
               | expressao OPSOMA expressao
               {
@@ -294,6 +301,7 @@
             }
             | PIPE
 
+
     entrada: LEIA var FIMCOMANDO
 
     saida: var ESCREVA FIMCOMANDO
@@ -313,7 +321,6 @@
                 $$->esq = NULL;
                 $$->dir = $2;
 
-            }
-            | SEND CARACTERE    
+            }  
 
 %%
