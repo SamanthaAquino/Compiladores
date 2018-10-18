@@ -10,11 +10,9 @@
         fprintf(stderr, "error: %s\n", str);
     }
 
-    int yywrap()    { return 1; }
-    int main()      { yyparse(); }
-%}
-
 No *root;
+
+%}
 
 %union {
     No *pont;
@@ -58,7 +56,6 @@ No *root;
 %token <pont> OPDIVISAO
 %token <pont> OPMOD
 
-
 %type <pont> S
 %type <pont> tipo
 %type <pont> param
@@ -70,9 +67,10 @@ No *root;
 %type <pont> condicional
 %type <pont> repeticao
 %type <pont> compara
-%type <pont> comp
 %type <pont> entrada
+%type <pont> paramEntrada
 %type <pont> saida
+%type <pont> paramSaida
 %type <pont> retorna
 
 %right OPATRIBUICAO
@@ -302,9 +300,65 @@ No *root;
             | PIPE
 
 
-    entrada: LEIA var FIMCOMANDO
+    entrada: TIPOINT paramEntrada
+             {
+               $$->(No*)malloc(sizeof(No));
+               $$->token = TIPOINT;
+               $$->esq = $2;
+               $$->dir = NULL;
+             }
+            | TIPOCARACTERE paramEntrada
+            {
+               $$->(No*)malloc(sizeof(No));
+               $$->token = TIPOCARACTERE;
+               $$->esq = $2;
+               $$->dir = NULL;
+            }
+            | TIPOREAL paramEntrada
+            {
+               $$->(No*)malloc(sizeof(No));
+               $$->token = TIPOREAL;
+               $$->esq = $2;
+               $$->dir = NULL;
+            }
 
-    saida: var ESCREVA FIMCOMANDO
+    paramEntrada: LEIA var FIMCOMANDO
+                  {
+                      $$->(No*)malloc(sizeof(No));
+                      $$->token = LEIA;
+                      $$->esq = $2;
+                      $$->dir = NULL;
+                  }    
+
+    saida: TIPOINT paramSaida
+           {
+              $$->(No*)malloc(sizeof(No));
+              $$->token = TIPOINT;
+              $$->esq = $2;
+              $$->dir = NULL;
+           }
+           | TIPOCARACTERE paramSaida
+           {
+              $$->(No*)malloc(sizeof(No));
+              $$->token = TIPOCARACTERE;
+              $$->esq = $2;
+              $$->dir = NULL;
+           }
+           | TIPOREAL paramSaida
+           {
+              $$->(No*)malloc(sizeof(No));
+              $$->token = TIPOREAL;
+              $$->esq = $2;
+              $$->dir = NULL;
+           }
+
+    paramSaida: ESCREVA var FIMCOMANDO
+                {
+                  $$->(No*)malloc(sizeof(No));
+                  $$->token = ESCREVA;
+                  $$->esq = $2;
+                  $$->dir = NULL;
+                }
 
     retorna: 
             | SEND var
@@ -324,3 +378,6 @@ No *root;
             }  
 
 %%
+
+int yywrap()    { return 1; }
+int main()      { yyparse(); }
