@@ -4,7 +4,8 @@
 	#include <string.h>
 	#include <math.h>
 
-    #include "AnalisadorSintatico.h"
+	#include "AnalisadorSintatico.h"
+    #include "AnalisadorSintatico.tab.h"
 %}
 
 %%

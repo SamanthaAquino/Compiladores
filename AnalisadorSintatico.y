@@ -7,7 +7,7 @@
 
 	void yyerror(const char *str)
 	{
-		fprint(stderr, "error: %s\n",str);
+		fprintf(stderr, "error: %s\n",str);
 	}
 
     void imprima(No *root);
@@ -16,6 +16,10 @@
 
 
     No *root;
+%}
+
+%{
+    int yylex();
 %}
 
 %union{
@@ -147,7 +151,7 @@
     | condicional
     | repeticao
     | entrada
-    | saida
+    | saida2
     |
     ;
 
@@ -364,7 +368,7 @@
     paramSaida: ESCREVA var FIMCOMANDO
     {
     	$$ = (No*)malloc(sizeof(No));
-    	$$->token = ENTRADA;
+    	$$->token = ESCREVA;
     	$$->esq = $2;
     	$$->dir = NULL;
     }
@@ -380,14 +384,9 @@
     ;
 %%
 
-int yywrap()
-{
-	return 1;
-}
-
 void imprima(No *root)
 {
-    if(root != NULL)
+    /*if(root != NULL)
     {
         switch(root->token) {
             case VARIAVEL:
@@ -434,7 +433,7 @@ void imprima(No *root)
              imprima(root->esq);
              fprintf(saida,"+");
              imprima(root->dir);              
-            break
+            break;
 
             case OPSUBTRACAO:
              imprima(root->esq);
@@ -535,10 +534,10 @@ void imprima(No *root)
              break;
 
         }
-    }
+    }*/
 }
 
 int main()
 {
-	yyparce();
+	yyparse();
 }

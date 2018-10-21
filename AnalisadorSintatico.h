@@ -1,5 +1,4 @@
-struct No { 
-{
+struct No {
 	int token, tokint;
 	double val;
 	char nome[256];
