@@ -12,7 +12,8 @@
 
     void imprima(No *root);
     
-    FILE *entrada,*saida;
+    //FILE *entrada;
+    FILE *saida;
 
 
     No *root;
@@ -385,156 +386,171 @@
 %%
 
 void imprima(No *root)
-{
-    /*if(root != NULL)
+{   
+	
+    if(root != NULL)
     {
+        char url[]="saida.txt";
+        saida = fopen(url, "w");
         switch(root->token) {
             case VARIAVEL:
-             break;
+                fprintf(saida, "%c", *(root->nome));
+                break;
 
             case INTEIRO:
-             break;
+                fprintf(saida, "%d", root->tokint);
+                break;
 
             case REAL:
-             break;
+                fprintf(saida, "%f", root->val);
+                break;
 
             case ABREC:
-             fprintf(saida,"{");
-             break;
+                fprintf(saida,"{");
+                break;
 
             case FECHAC:
-             fprintf(saida,"}");
-             break;
+                fprintf(saida,"}");
+                break;
 
             case ABREP:
-             fprintf(saida,"(");
-             break;
+                fprintf(saida,"(");
+                break;
 
             case FECHAP:
-             fprintf(saida,")");
-             break;
+                fprintf(saida,")");
+                break;
 
             case FIMCOMANDO:
-             fprintf(saida,".");
-             break;
+                fprintf(saida,".");
+                break;
 
             case PIPE:
-             fprintf(saida,"|");
-             break;
+                fprintf(saida,"|");
+                break;
 
             case OPATRIBUICAO:
-             imprima(root->esq);
-             fprintf(saida,"=");
-             imprima(root->dir);
-             fprintf(saida,".");
-             break;
+                imprima(root->esq);
+                fprintf(saida,"=");
+                imprima(root->dir);
+                fprintf(saida,".");
+                break;
 
             case OPSOMA:
-             imprima(root->esq);
-             fprintf(saida,"+");
-             imprima(root->dir);              
-            break;
+                imprima(root->esq);
+                fprintf(saida,"+");
+                imprima(root->dir);              
+                break;
 
             case OPSUBTRACAO:
-             imprima(root->esq);
-             fprintf(saida,"-");
-             imprima(root->dir);
-             break;
+                imprima(root->esq);
+                fprintf(saida,"-");
+                imprima(root->dir);
+                break;
 
             case OPMULTIPLICACAO:
-             imprima(root->esq);
-             fprintf(saida,"*");
-             imprima(root->dir);
-             break;
+                imprima(root->esq);
+                fprintf(saida,"*");
+                imprima(root->dir);
+                break;
 
             case OPDIVISAO:
-             imprima(root->esq);
-             fprintf(saida,"/");
-             imprima(root->dir);
-             break;
+                imprima(root->esq);
+                fprintf(saida,"/");
+                imprima(root->dir);
+                break;
 
             case OPMOD:
-             imprima(root->esq);
-             fprintf(saida,"%");
-             imprima(root->dir);
-             break;
+                imprima(root->esq);
+                fprintf(saida,"%");
+                imprima(root->dir);
+                break;
 
             case OPCOMPARACAO:
-             imprima(root->esq);
-             fprintf(saida,":");
-             imprima(root->dir);                
-             break;
+                imprima(root->esq);
+                fprintf(saida,":");
+                imprima(root->dir);                
+                break;
 
             case OPMENORIGUAL:
-              imprima(root->esq);
-              fprintf(saida,"<:");
-              imprima(root->dir);
-              break;
+                imprima(root->esq);
+                fprintf(saida,"<:");
+                imprima(root->dir);
+                break;
 
             case OPMAIORIGUAL:
-             imprima(root->esq);
-             fprintf(saida,">:");
-             imprima(root->dir);
-             break;
+                imprima(root->esq);
+                fprintf(saida,">:");
+                imprima(root->dir);
+                break;
 
             case OPMENOR:
-             imprima(root->esq);
-             fprintf(saida,"<");
-             imprima(root->dir);
-             break;
+                imprima(root->esq);
+                fprintf(saida,"<");
+                imprima(root->dir);
+                break;
 
             case OPMAIOR:
-             imprima(root->esq);
-             fprintf(saida,">");
-             imprima(root->dir);
-             break;
+                imprima(root->esq);
+                fprintf(saida,">");
+                imprima(root->dir);
+                break;
 
             case OPDIFERENTE:
-             imprima(root->esq);
-             fprintf(saida,"~:");
-             imprima(root->dir);
-             break;
+                imprima(root->esq);
+                fprintf(saida,"~:");
+                imprima(root->dir);
+                break;
 
             case TIPOINT:
-             fprintf(saida,"i");
-             break;
+                fprintf(saida,"i");
+                break;
 
             case TIPOREAL:
-             fprintf(saida,"r");
-             break;
+                fprintf(saida,"r");
+                break;
 
             case TIPOCARACTERE:
-             fprintf(saida,"c");
-             break;
+                fprintf(saida,"c");
+                break;
 
             case IF:
-             break;
+                fprintf(saida,"if");
+                fprintf(saida,"(");
+                imprima(root->lookahead);
+                fprintf(saida,")");
+                fprintf(saida,"{\n");
+                imprima(root->esq);
+                fprintf(saida,"\n}\n");
+                break;
+                break;
 
             case FUNCTION:
-             break;
+                break;
 
             case WHILE:
-             fprintf(saida,"while");
-             fprintf(saida,"(");
-             imprima(root->lookahead);
-             fprintf(saida,")");
-             fprintf(saida,"{\n");
-             imprima(root->esq);
-             fprintf(saida,"\n}\n");
-             break;
+                fprintf(saida,"while");
+                fprintf(saida,"(");
+                imprima(root->lookahead);
+                fprintf(saida,")");
+                fprintf(saida,"{\n");
+                imprima(root->esq);
+                fprintf(saida,"\n}\n");
+                break;
 
             case ESCREVA:
-
-             break;
+                break;
 
             case LEIA:
-             break;
+                break;
 
             case SEND:
-             break;
+                fprintf(saida, "send");
+                imprima(root->esq);
+                break;
 
         }
-    }*/
+    }
 }
 
 int main()

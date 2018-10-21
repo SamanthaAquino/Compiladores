@@ -77,15 +77,16 @@
 
     void imprima(No *root);
     
-    FILE *entrada,*saida;
+    //FILE *entrada;
+    FILE *saida;
 
 
     No *root;
-#line 21 "AnalisadorSintatico.y" /* yacc.c:339  */
+#line 22 "AnalisadorSintatico.y" /* yacc.c:339  */
 
     int yylex();
 
-#line 89 "AnalisadorSintatico.tab.c" /* yacc.c:339  */
+#line 90 "AnalisadorSintatico.tab.c" /* yacc.c:339  */
 
 # ifndef YY_NULLPTR
 #  if defined __cplusplus && 201103L <= __cplusplus
@@ -160,11 +161,11 @@ extern int yydebug;
 
 union YYSTYPE
 {
-#line 25 "AnalisadorSintatico.y" /* yacc.c:355  */
+#line 26 "AnalisadorSintatico.y" /* yacc.c:355  */
 
 	No *pont;
 
-#line 168 "AnalisadorSintatico.tab.c" /* yacc.c:355  */
+#line 169 "AnalisadorSintatico.tab.c" /* yacc.c:355  */
 };
 
 typedef union YYSTYPE YYSTYPE;
@@ -181,7 +182,7 @@ int yyparse (void);
 
 /* Copy the second part of user declarations.  */
 
-#line 185 "AnalisadorSintatico.tab.c" /* yacc.c:358  */
+#line 186 "AnalisadorSintatico.tab.c" /* yacc.c:358  */
 
 #ifdef short
 # undef short
@@ -481,12 +482,12 @@ static const yytype_uint8 yytranslate[] =
   /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_uint16 yyrline[] =
 {
-       0,    92,    92,    94,   107,   116,   123,   130,   139,   140,
-     141,   144,   145,   148,   150,   151,   152,   153,   154,   155,
-     158,   167,   168,   175,   182,   190,   198,   206,   214,   222,
-     225,   233,   243,   253,   260,   267,   274,   281,   288,   295,
-     302,   309,   310,   313,   320,   327,   336,   345,   352,   359,
-     368,   377
+       0,    93,    93,    95,   108,   117,   124,   131,   140,   141,
+     142,   145,   146,   149,   151,   152,   153,   154,   155,   156,
+     159,   168,   169,   176,   183,   191,   199,   207,   215,   223,
+     226,   234,   244,   254,   261,   268,   275,   282,   289,   296,
+     303,   310,   311,   314,   321,   328,   337,   346,   353,   360,
+     369,   378
 };
 #endif
 
@@ -1330,13 +1331,13 @@ yyreduce:
   switch (yyn)
     {
         case 2:
-#line 92 "AnalisadorSintatico.y" /* yacc.c:1646  */
+#line 93 "AnalisadorSintatico.y" /* yacc.c:1646  */
     {root = (yyvsp[0].pont);}
-#line 1336 "AnalisadorSintatico.tab.c" /* yacc.c:1646  */
+#line 1337 "AnalisadorSintatico.tab.c" /* yacc.c:1646  */
     break;
 
   case 3:
-#line 95 "AnalisadorSintatico.y" /* yacc.c:1646  */
+#line 96 "AnalisadorSintatico.y" /* yacc.c:1646  */
     {
 		(yyval.pont) = (No*)malloc(sizeof(No));
 		(yyval.pont)->token = FUNCTION;
@@ -1347,88 +1348,88 @@ yyreduce:
 		(yyval.pont)->esq = (yyvsp[-1].pont);
 		(yyval.pont)->dir = NULL;
 	}
-#line 1351 "AnalisadorSintatico.tab.c" /* yacc.c:1646  */
+#line 1352 "AnalisadorSintatico.tab.c" /* yacc.c:1646  */
     break;
 
   case 4:
-#line 108 "AnalisadorSintatico.y" /* yacc.c:1646  */
+#line 109 "AnalisadorSintatico.y" /* yacc.c:1646  */
     {
 	  	(yyval.pont) = (No*)malloc(sizeof(No));
 	   	(yyval.pont)->token = VARIAVEL;
 	   	(yyval.pont)->esq = NULL;
 	   	(yyval.pont)->dir = NULL;
 	}
-#line 1362 "AnalisadorSintatico.tab.c" /* yacc.c:1646  */
+#line 1363 "AnalisadorSintatico.tab.c" /* yacc.c:1646  */
     break;
 
   case 5:
-#line 117 "AnalisadorSintatico.y" /* yacc.c:1646  */
+#line 118 "AnalisadorSintatico.y" /* yacc.c:1646  */
     {
 		(yyval.pont) = (No*)malloc(sizeof(No));
 		(yyval.pont)->token = TIPOINT;
 		(yyval.pont)->esq = NULL;
 		(yyval.pont)->dir = NULL;
 	}
-#line 1373 "AnalisadorSintatico.tab.c" /* yacc.c:1646  */
+#line 1374 "AnalisadorSintatico.tab.c" /* yacc.c:1646  */
     break;
 
   case 6:
-#line 124 "AnalisadorSintatico.y" /* yacc.c:1646  */
+#line 125 "AnalisadorSintatico.y" /* yacc.c:1646  */
     {
 		(yyval.pont) = (No*)malloc(sizeof(No));
 		(yyval.pont)->token = TIPOREAL;
 		(yyval.pont)->esq = NULL;
 		(yyval.pont)->dir = NULL;
 	}
-#line 1384 "AnalisadorSintatico.tab.c" /* yacc.c:1646  */
+#line 1385 "AnalisadorSintatico.tab.c" /* yacc.c:1646  */
     break;
 
   case 7:
-#line 131 "AnalisadorSintatico.y" /* yacc.c:1646  */
+#line 132 "AnalisadorSintatico.y" /* yacc.c:1646  */
     {
 		(yyval.pont) = (No*)malloc(sizeof(No));
 		(yyval.pont)->token = TIPOCARACTERE;
 		(yyval.pont)->esq = NULL;
 		(yyval.pont)->dir = NULL;
 	}
-#line 1395 "AnalisadorSintatico.tab.c" /* yacc.c:1646  */
+#line 1396 "AnalisadorSintatico.tab.c" /* yacc.c:1646  */
     break;
 
   case 20:
-#line 159 "AnalisadorSintatico.y" /* yacc.c:1646  */
+#line 160 "AnalisadorSintatico.y" /* yacc.c:1646  */
     {
     	(yyval.pont) = (No*)malloc(sizeof(No));
     	(yyval.pont)->token = OPATRIBUICAO;
     	(yyval.pont)->esq = NULL;
     	(yyval.pont)->dir = NULL;
     }
-#line 1406 "AnalisadorSintatico.tab.c" /* yacc.c:1646  */
+#line 1407 "AnalisadorSintatico.tab.c" /* yacc.c:1646  */
     break;
 
   case 22:
-#line 169 "AnalisadorSintatico.y" /* yacc.c:1646  */
+#line 170 "AnalisadorSintatico.y" /* yacc.c:1646  */
     {
       	(yyval.pont) = (No*)malloc(sizeof(No));
        	(yyval.pont)->token = INTEIRO;
        	(yyval.pont)->esq = NULL;
        	(yyval.pont)->dir = NULL;
     }
-#line 1417 "AnalisadorSintatico.tab.c" /* yacc.c:1646  */
+#line 1418 "AnalisadorSintatico.tab.c" /* yacc.c:1646  */
     break;
 
   case 23:
-#line 176 "AnalisadorSintatico.y" /* yacc.c:1646  */
+#line 177 "AnalisadorSintatico.y" /* yacc.c:1646  */
     {
        	(yyval.pont) = (No*)malloc(sizeof(No));
        	(yyval.pont)->token = REAL;
        	(yyval.pont)->esq = NULL;
        	(yyval.pont)->dir = NULL;
     }
-#line 1428 "AnalisadorSintatico.tab.c" /* yacc.c:1646  */
+#line 1429 "AnalisadorSintatico.tab.c" /* yacc.c:1646  */
     break;
 
   case 24:
-#line 183 "AnalisadorSintatico.y" /* yacc.c:1646  */
+#line 184 "AnalisadorSintatico.y" /* yacc.c:1646  */
     {
        	(yyval.pont) = (No*)malloc(sizeof(No));
        	(yyval.pont)->token = OPSOMA;
@@ -1436,11 +1437,11 @@ yyreduce:
        	(yyval.pont)->esq = (yyvsp[-2].pont);
        	(yyval.pont)->dir = (yyvsp[0].pont);
     }
-#line 1440 "AnalisadorSintatico.tab.c" /* yacc.c:1646  */
+#line 1441 "AnalisadorSintatico.tab.c" /* yacc.c:1646  */
     break;
 
   case 25:
-#line 191 "AnalisadorSintatico.y" /* yacc.c:1646  */
+#line 192 "AnalisadorSintatico.y" /* yacc.c:1646  */
     {
        	(yyval.pont) = (No*)malloc(sizeof(No));
        	(yyval.pont)->token = OPSUBTRACAO;
@@ -1448,11 +1449,11 @@ yyreduce:
        	(yyval.pont)->esq = (yyvsp[-2].pont);
        	(yyval.pont)->dir = (yyvsp[0].pont);
     }
-#line 1452 "AnalisadorSintatico.tab.c" /* yacc.c:1646  */
+#line 1453 "AnalisadorSintatico.tab.c" /* yacc.c:1646  */
     break;
 
   case 26:
-#line 199 "AnalisadorSintatico.y" /* yacc.c:1646  */
+#line 200 "AnalisadorSintatico.y" /* yacc.c:1646  */
     {
        	(yyval.pont) = (No*)malloc(sizeof(No));
       	(yyval.pont)->token = OPMULTIPLICACAO;
@@ -1460,11 +1461,11 @@ yyreduce:
        	(yyval.pont)->esq = (yyvsp[-2].pont);
        	(yyval.pont)->dir = (yyvsp[0].pont);
     }
-#line 1464 "AnalisadorSintatico.tab.c" /* yacc.c:1646  */
+#line 1465 "AnalisadorSintatico.tab.c" /* yacc.c:1646  */
     break;
 
   case 27:
-#line 207 "AnalisadorSintatico.y" /* yacc.c:1646  */
+#line 208 "AnalisadorSintatico.y" /* yacc.c:1646  */
     {
        	(yyval.pont) = (No*)malloc(sizeof(No));
        	(yyval.pont)->token = OPDIVISAO;
@@ -1472,11 +1473,11 @@ yyreduce:
        	(yyval.pont)->esq = (yyvsp[-2].pont);
        	(yyval.pont)->dir = (yyvsp[0].pont);
     }
-#line 1476 "AnalisadorSintatico.tab.c" /* yacc.c:1646  */
+#line 1477 "AnalisadorSintatico.tab.c" /* yacc.c:1646  */
     break;
 
   case 28:
-#line 215 "AnalisadorSintatico.y" /* yacc.c:1646  */
+#line 216 "AnalisadorSintatico.y" /* yacc.c:1646  */
     {
     	(yyval.pont) = (No*)malloc(sizeof(No));
       	(yyval.pont)->token = OPMOD;
@@ -1484,11 +1485,11 @@ yyreduce:
        	(yyval.pont)->esq = (yyvsp[-2].pont);
        	(yyval.pont)->dir = (yyvsp[0].pont);
     }
-#line 1488 "AnalisadorSintatico.tab.c" /* yacc.c:1646  */
+#line 1489 "AnalisadorSintatico.tab.c" /* yacc.c:1646  */
     break;
 
   case 30:
-#line 226 "AnalisadorSintatico.y" /* yacc.c:1646  */
+#line 227 "AnalisadorSintatico.y" /* yacc.c:1646  */
     {
     	(yyval.pont) = (No*)malloc(sizeof(No));
     	(yyval.pont)->token = IF;
@@ -1496,11 +1497,11 @@ yyreduce:
     	(yyval.pont)->esq = (yyvsp[-1].pont);
     	(yyval.pont)->dir = NULL;
     }
-#line 1500 "AnalisadorSintatico.tab.c" /* yacc.c:1646  */
+#line 1501 "AnalisadorSintatico.tab.c" /* yacc.c:1646  */
     break;
 
   case 31:
-#line 234 "AnalisadorSintatico.y" /* yacc.c:1646  */
+#line 235 "AnalisadorSintatico.y" /* yacc.c:1646  */
     {
     	(yyval.pont) = (No*)malloc(sizeof(No));
     	(yyval.pont)->token = IF;
@@ -1508,11 +1509,11 @@ yyreduce:
     	(yyval.pont)->esq = (yyvsp[-1].pont);
     	(yyval.pont)->dir = NULL;
     }
-#line 1512 "AnalisadorSintatico.tab.c" /* yacc.c:1646  */
+#line 1513 "AnalisadorSintatico.tab.c" /* yacc.c:1646  */
     break;
 
   case 32:
-#line 244 "AnalisadorSintatico.y" /* yacc.c:1646  */
+#line 245 "AnalisadorSintatico.y" /* yacc.c:1646  */
     {
     	(yyval.pont) = (No*)malloc(sizeof(No));
     	(yyval.pont)->token = WHILE;
@@ -1520,198 +1521,198 @@ yyreduce:
     	(yyval.pont)->esq = (yyvsp[-1].pont);
     	(yyval.pont)->dir = NULL;
     }
-#line 1524 "AnalisadorSintatico.tab.c" /* yacc.c:1646  */
+#line 1525 "AnalisadorSintatico.tab.c" /* yacc.c:1646  */
     break;
 
   case 33:
-#line 254 "AnalisadorSintatico.y" /* yacc.c:1646  */
+#line 255 "AnalisadorSintatico.y" /* yacc.c:1646  */
     {
     	(yyval.pont) = (No*)malloc(sizeof(No));
     	(yyval.pont)->token = OPCOMPARACAO;
     	(yyval.pont)->esq = (yyvsp[-2].pont);
 	    (yyval.pont)->dir = (yyvsp[0].pont);
     }
-#line 1535 "AnalisadorSintatico.tab.c" /* yacc.c:1646  */
+#line 1536 "AnalisadorSintatico.tab.c" /* yacc.c:1646  */
     break;
 
   case 34:
-#line 261 "AnalisadorSintatico.y" /* yacc.c:1646  */
+#line 262 "AnalisadorSintatico.y" /* yacc.c:1646  */
     {
     	(yyval.pont) = (No*)malloc(sizeof(No));
     	(yyval.pont)->token = OPMENORIGUAL;
     	(yyval.pont)->esq = (yyvsp[-2].pont);
     	(yyval.pont)->dir = (yyvsp[0].pont);
     }
-#line 1546 "AnalisadorSintatico.tab.c" /* yacc.c:1646  */
+#line 1547 "AnalisadorSintatico.tab.c" /* yacc.c:1646  */
     break;
 
   case 35:
-#line 268 "AnalisadorSintatico.y" /* yacc.c:1646  */
+#line 269 "AnalisadorSintatico.y" /* yacc.c:1646  */
     {
     	(yyval.pont) = (No*)malloc(sizeof(No));
     	(yyval.pont)->token = OPMAIORIGUAL;
     	(yyval.pont)->esq = (yyvsp[-2].pont);
     	(yyval.pont)->dir = (yyvsp[0].pont);
     }
-#line 1557 "AnalisadorSintatico.tab.c" /* yacc.c:1646  */
+#line 1558 "AnalisadorSintatico.tab.c" /* yacc.c:1646  */
     break;
 
   case 36:
-#line 275 "AnalisadorSintatico.y" /* yacc.c:1646  */
+#line 276 "AnalisadorSintatico.y" /* yacc.c:1646  */
     {
     	(yyval.pont) = (No*)malloc(sizeof(No));
     	(yyval.pont)->token = OPMENOR;
     	(yyval.pont)->esq = (yyvsp[-2].pont);
     	(yyval.pont)->dir = (yyvsp[0].pont);
     }
-#line 1568 "AnalisadorSintatico.tab.c" /* yacc.c:1646  */
+#line 1569 "AnalisadorSintatico.tab.c" /* yacc.c:1646  */
     break;
 
   case 37:
-#line 282 "AnalisadorSintatico.y" /* yacc.c:1646  */
+#line 283 "AnalisadorSintatico.y" /* yacc.c:1646  */
     {
     	(yyval.pont) = (No*)malloc(sizeof(No));
     	(yyval.pont)->token = OPMAIOR;
     	(yyval.pont)->esq = (yyvsp[-2].pont);
     	(yyval.pont)->dir = (yyvsp[0].pont);
     }
-#line 1579 "AnalisadorSintatico.tab.c" /* yacc.c:1646  */
+#line 1580 "AnalisadorSintatico.tab.c" /* yacc.c:1646  */
     break;
 
   case 38:
-#line 289 "AnalisadorSintatico.y" /* yacc.c:1646  */
+#line 290 "AnalisadorSintatico.y" /* yacc.c:1646  */
     {
     	(yyval.pont) = (No*)malloc(sizeof(No));
     	(yyval.pont)->token = OPDIFERENTE;
     	(yyval.pont)->esq = (yyvsp[-2].pont);
     	(yyval.pont)->dir = (yyvsp[0].pont);
     }
-#line 1590 "AnalisadorSintatico.tab.c" /* yacc.c:1646  */
+#line 1591 "AnalisadorSintatico.tab.c" /* yacc.c:1646  */
     break;
 
   case 39:
-#line 296 "AnalisadorSintatico.y" /* yacc.c:1646  */
+#line 297 "AnalisadorSintatico.y" /* yacc.c:1646  */
     {
     	(yyval.pont) = (No*)malloc(sizeof(No));
     	(yyval.pont)->token = OPLOGICO;
     	(yyval.pont)->esq = (yyvsp[-2].pont);
     	(yyval.pont)->dir = (yyvsp[0].pont);
     }
-#line 1601 "AnalisadorSintatico.tab.c" /* yacc.c:1646  */
+#line 1602 "AnalisadorSintatico.tab.c" /* yacc.c:1646  */
     break;
 
   case 40:
-#line 303 "AnalisadorSintatico.y" /* yacc.c:1646  */
+#line 304 "AnalisadorSintatico.y" /* yacc.c:1646  */
     {
     	(yyval.pont) = (No*)malloc(sizeof(No));
     	(yyval.pont)->token = OPNEGACAO;
     	(yyval.pont)->esq = NULL;
     	(yyval.pont)->dir = (yyvsp[0].pont);
     }
-#line 1612 "AnalisadorSintatico.tab.c" /* yacc.c:1646  */
+#line 1613 "AnalisadorSintatico.tab.c" /* yacc.c:1646  */
     break;
 
   case 43:
-#line 314 "AnalisadorSintatico.y" /* yacc.c:1646  */
+#line 315 "AnalisadorSintatico.y" /* yacc.c:1646  */
     {
     	(yyval.pont) = (No*)malloc(sizeof(No));
     	(yyval.pont)->token = TIPOINT;
     	(yyval.pont)->esq = (yyvsp[0].pont);
     	(yyval.pont)->dir = NULL;
     }
-#line 1623 "AnalisadorSintatico.tab.c" /* yacc.c:1646  */
+#line 1624 "AnalisadorSintatico.tab.c" /* yacc.c:1646  */
     break;
 
   case 44:
-#line 321 "AnalisadorSintatico.y" /* yacc.c:1646  */
+#line 322 "AnalisadorSintatico.y" /* yacc.c:1646  */
     {
     	(yyval.pont) = (No*)malloc(sizeof(No));
     	(yyval.pont)->token = TIPOREAL;
     	(yyval.pont)->esq = (yyvsp[0].pont);
     	(yyval.pont)->dir = NULL;
     }
-#line 1634 "AnalisadorSintatico.tab.c" /* yacc.c:1646  */
+#line 1635 "AnalisadorSintatico.tab.c" /* yacc.c:1646  */
     break;
 
   case 45:
-#line 328 "AnalisadorSintatico.y" /* yacc.c:1646  */
+#line 329 "AnalisadorSintatico.y" /* yacc.c:1646  */
     {
     	(yyval.pont) = (No*)malloc(sizeof(No));
         (yyval.pont)->token = TIPOCARACTERE;
     	(yyval.pont)->esq = (yyvsp[0].pont);
     	(yyval.pont)->dir = NULL;
     }
-#line 1645 "AnalisadorSintatico.tab.c" /* yacc.c:1646  */
+#line 1646 "AnalisadorSintatico.tab.c" /* yacc.c:1646  */
     break;
 
   case 46:
-#line 337 "AnalisadorSintatico.y" /* yacc.c:1646  */
+#line 338 "AnalisadorSintatico.y" /* yacc.c:1646  */
     {
     	(yyval.pont) = (No*)malloc(sizeof(No));
     	(yyval.pont)->token = LEIA;
     	(yyval.pont)->esq = (yyvsp[-1].pont);
     	(yyval.pont)->dir = NULL;
     }
-#line 1656 "AnalisadorSintatico.tab.c" /* yacc.c:1646  */
+#line 1657 "AnalisadorSintatico.tab.c" /* yacc.c:1646  */
     break;
 
   case 47:
-#line 346 "AnalisadorSintatico.y" /* yacc.c:1646  */
+#line 347 "AnalisadorSintatico.y" /* yacc.c:1646  */
     {
     	(yyval.pont) = (No*)malloc(sizeof(No));
     	(yyval.pont)->token = TIPOINT;
     	(yyval.pont)->esq = (yyvsp[0].pont);
     	(yyval.pont)->dir = NULL;
     }
-#line 1667 "AnalisadorSintatico.tab.c" /* yacc.c:1646  */
+#line 1668 "AnalisadorSintatico.tab.c" /* yacc.c:1646  */
     break;
 
   case 48:
-#line 353 "AnalisadorSintatico.y" /* yacc.c:1646  */
+#line 354 "AnalisadorSintatico.y" /* yacc.c:1646  */
     {
         (yyval.pont) = (No*)malloc(sizeof(No));
     	(yyval.pont)->token = TIPOREAL;
     	(yyval.pont)->esq = (yyvsp[0].pont);
       	(yyval.pont)->dir = NULL;
     }
-#line 1678 "AnalisadorSintatico.tab.c" /* yacc.c:1646  */
+#line 1679 "AnalisadorSintatico.tab.c" /* yacc.c:1646  */
     break;
 
   case 49:
-#line 360 "AnalisadorSintatico.y" /* yacc.c:1646  */
+#line 361 "AnalisadorSintatico.y" /* yacc.c:1646  */
     {
     	(yyval.pont) = (No*)malloc(sizeof(No));
     	(yyval.pont)->token = TIPOCARACTERE;
     	(yyval.pont)->esq = (yyvsp[0].pont);
     	(yyval.pont)->dir = NULL;
     }
-#line 1689 "AnalisadorSintatico.tab.c" /* yacc.c:1646  */
+#line 1690 "AnalisadorSintatico.tab.c" /* yacc.c:1646  */
     break;
 
   case 50:
-#line 369 "AnalisadorSintatico.y" /* yacc.c:1646  */
+#line 370 "AnalisadorSintatico.y" /* yacc.c:1646  */
     {
     	(yyval.pont) = (No*)malloc(sizeof(No));
     	(yyval.pont)->token = ESCREVA;
     	(yyval.pont)->esq = (yyvsp[-1].pont);
     	(yyval.pont)->dir = NULL;
     }
-#line 1700 "AnalisadorSintatico.tab.c" /* yacc.c:1646  */
+#line 1701 "AnalisadorSintatico.tab.c" /* yacc.c:1646  */
     break;
 
   case 51:
-#line 378 "AnalisadorSintatico.y" /* yacc.c:1646  */
+#line 379 "AnalisadorSintatico.y" /* yacc.c:1646  */
     {
     	(yyval.pont) = (No*)malloc(sizeof(No));
     	(yyval.pont)->token = SEND;
     	(yyval.pont)->esq = (yyvsp[0].pont);
     	(yyval.pont)->dir = NULL;
     }
-#line 1711 "AnalisadorSintatico.tab.c" /* yacc.c:1646  */
+#line 1712 "AnalisadorSintatico.tab.c" /* yacc.c:1646  */
     break;
 
 
-#line 1715 "AnalisadorSintatico.tab.c" /* yacc.c:1646  */
+#line 1716 "AnalisadorSintatico.tab.c" /* yacc.c:1646  */
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -1939,160 +1940,175 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 385 "AnalisadorSintatico.y" /* yacc.c:1906  */
+#line 386 "AnalisadorSintatico.y" /* yacc.c:1906  */
 
 
 void imprima(No *root)
-{
-    /*if(root != NULL)
+{   
+	
+    if(root != NULL)
     {
+        char url[]="saida.txt";
+        saida = fopen(url, "w");
         switch(root->token) {
             case VARIAVEL:
-             break;
+                fprintf(saida, "%c", *(root->nome));
+                break;
 
             case INTEIRO:
-             break;
+                fprintf(saida, "%d", root->tokint);
+                break;
 
             case REAL:
-             break;
+                fprintf(saida, "%f", root->val);
+                break;
 
             case ABREC:
-             fprintf(saida,"{");
-             break;
+                fprintf(saida,"{");
+                break;
 
             case FECHAC:
-             fprintf(saida,"}");
-             break;
+                fprintf(saida,"}");
+                break;
 
             case ABREP:
-             fprintf(saida,"(");
-             break;
+                fprintf(saida,"(");
+                break;
 
             case FECHAP:
-             fprintf(saida,")");
-             break;
+                fprintf(saida,")");
+                break;
 
             case FIMCOMANDO:
-             fprintf(saida,".");
-             break;
+                fprintf(saida,".");
+                break;
 
             case PIPE:
-             fprintf(saida,"|");
-             break;
+                fprintf(saida,"|");
+                break;
 
             case OPATRIBUICAO:
-             imprima(root->esq);
-             fprintf(saida,"=");
-             imprima(root->dir);
-             fprintf(saida,".");
-             break;
+                imprima(root->esq);
+                fprintf(saida,"=");
+                imprima(root->dir);
+                fprintf(saida,".");
+                break;
 
             case OPSOMA:
-             imprima(root->esq);
-             fprintf(saida,"+");
-             imprima(root->dir);              
-            break;
+                imprima(root->esq);
+                fprintf(saida,"+");
+                imprima(root->dir);              
+                break;
 
             case OPSUBTRACAO:
-             imprima(root->esq);
-             fprintf(saida,"-");
-             imprima(root->dir);
-             break;
+                imprima(root->esq);
+                fprintf(saida,"-");
+                imprima(root->dir);
+                break;
 
             case OPMULTIPLICACAO:
-             imprima(root->esq);
-             fprintf(saida,"*");
-             imprima(root->dir);
-             break;
+                imprima(root->esq);
+                fprintf(saida,"*");
+                imprima(root->dir);
+                break;
 
             case OPDIVISAO:
-             imprima(root->esq);
-             fprintf(saida,"/");
-             imprima(root->dir);
-             break;
+                imprima(root->esq);
+                fprintf(saida,"/");
+                imprima(root->dir);
+                break;
 
             case OPMOD:
-             imprima(root->esq);
-             fprintf(saida,"%");
-             imprima(root->dir);
-             break;
+                imprima(root->esq);
+                fprintf(saida,"%");
+                imprima(root->dir);
+                break;
 
             case OPCOMPARACAO:
-             imprima(root->esq);
-             fprintf(saida,":");
-             imprima(root->dir);                
-             break;
+                imprima(root->esq);
+                fprintf(saida,":");
+                imprima(root->dir);                
+                break;
 
             case OPMENORIGUAL:
-              imprima(root->esq);
-              fprintf(saida,"<:");
-              imprima(root->dir);
-              break;
+                imprima(root->esq);
+                fprintf(saida,"<:");
+                imprima(root->dir);
+                break;
 
             case OPMAIORIGUAL:
-             imprima(root->esq);
-             fprintf(saida,">:");
-             imprima(root->dir);
-             break;
+                imprima(root->esq);
+                fprintf(saida,">:");
+                imprima(root->dir);
+                break;
 
             case OPMENOR:
-             imprima(root->esq);
-             fprintf(saida,"<");
-             imprima(root->dir);
-             break;
+                imprima(root->esq);
+                fprintf(saida,"<");
+                imprima(root->dir);
+                break;
 
             case OPMAIOR:
-             imprima(root->esq);
-             fprintf(saida,">");
-             imprima(root->dir);
-             break;
+                imprima(root->esq);
+                fprintf(saida,">");
+                imprima(root->dir);
+                break;
 
             case OPDIFERENTE:
-             imprima(root->esq);
-             fprintf(saida,"~:");
-             imprima(root->dir);
-             break;
+                imprima(root->esq);
+                fprintf(saida,"~:");
+                imprima(root->dir);
+                break;
 
             case TIPOINT:
-             fprintf(saida,"i");
-             break;
+                fprintf(saida,"i");
+                break;
 
             case TIPOREAL:
-             fprintf(saida,"r");
-             break;
+                fprintf(saida,"r");
+                break;
 
             case TIPOCARACTERE:
-             fprintf(saida,"c");
-             break;
+                fprintf(saida,"c");
+                break;
 
             case IF:
-             break;
+                fprintf(saida,"if");
+                fprintf(saida,"(");
+                imprima(root->lookahead);
+                fprintf(saida,")");
+                fprintf(saida,"{\n");
+                imprima(root->esq);
+                fprintf(saida,"\n}\n");
+                break;
+                break;
 
             case FUNCTION:
-             break;
+                break;
 
             case WHILE:
-             fprintf(saida,"while");
-             fprintf(saida,"(");
-             imprima(root->lookahead);
-             fprintf(saida,")");
-             fprintf(saida,"{\n");
-             imprima(root->esq);
-             fprintf(saida,"\n}\n");
-             break;
+                fprintf(saida,"while");
+                fprintf(saida,"(");
+                imprima(root->lookahead);
+                fprintf(saida,")");
+                fprintf(saida,"{\n");
+                imprima(root->esq);
+                fprintf(saida,"\n}\n");
+                break;
 
             case ESCREVA:
-
-             break;
+                break;
 
             case LEIA:
-             break;
+                break;
 
             case SEND:
-             break;
+                fprintf(saida, "send");
+                imprima(root->esq);
+                break;
 
         }
-    }*/
+    }
 }
 
 int main()

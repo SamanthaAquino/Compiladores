@@ -85,7 +85,7 @@ extern int yydebug;
 
 union YYSTYPE
 {
-#line 25 "AnalisadorSintatico.y" /* yacc.c:1909  */
+#line 26 "AnalisadorSintatico.y" /* yacc.c:1909  */
 
 	No *pont;
 
