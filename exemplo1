@@ -1,0 +1,11 @@
+function
+	i celsius=45.
+	i fahr=0.
+
+	fahr = celsius*9.
+	fahr = fahr/5.
+	fahr = fahr+32.
+
+	out #fahr.
+
+endfunction

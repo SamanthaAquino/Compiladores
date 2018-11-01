@@ -1,0 +1,20 @@
+function i passou (r nota1 | r nota2)
+{
+	r final.
+	final = nota1 + nota2.
+	final = final/2.
+
+	if (final < 6.0)
+	{
+		r nota3.
+		r in nota3.
+
+		final = nota1 + nota2.
+		final = final + nota3.
+		final = final / 3.
+
+		r out final.
+
+		send 0.
+	}
+}
