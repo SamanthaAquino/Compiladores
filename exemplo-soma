@@ -1,0 +1,8 @@
+function
+
+i a = 10.
+i b = 10.
+a = a + b.
+
+out #a.
+endfunction

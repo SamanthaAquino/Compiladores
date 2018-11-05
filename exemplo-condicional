@@ -1,0 +1,10 @@
+function
+
+	i nota = 7.
+
+	if(nota >: 7)
+	{
+		out &PASSAMOTHATY.
+	}
+
+endfunction

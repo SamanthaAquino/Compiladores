@@ -1,0 +1,11 @@
+function
+	i l1 = 20.
+	i l2 = 40.
+	i h = 1.
+	i vol = 0.
+
+	vol = l1*l2.
+	vol = vol*h.
+	out #vol.
+
+endfunction

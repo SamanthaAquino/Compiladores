@@ -168,6 +168,11 @@
 				fprintf(arq,"(\"%%d\", %s)", yylval.var);
 				fprintf(arqtoken,"%s\t\t\t\t%d\t\t\t\t\n",tokname(tok), EM_tokPos);
 				break;
+			case STRING2:
+				yylval.var = yylval.var + 1;
+				fprintf(arq,"(\"%s\")", yylval.var);
+				fprintf(arqtoken, "%s\t\t\t\t%d\t\t\t\t\n", tokname(tok), EM_tokPos);
+				break;
 			default:
 				fprintf(arqtoken,"%s\t\t\t\t%d\t\t\t\t\n",tokname(tok), EM_tokPos);
 		}
@@ -214,5 +219,6 @@
 [0-9]+.[0-9]+ {adjust(); tok = REAL ; yylval.real=atof(yytext); write_file(); printf("Tipo de dado: %s\n",yytext); return (REAL);}
 [a-zA-Z][a-zA-Z0-9]* {adjust(); tok = VARIAVEL ; yylval.var=yytext; write_file(); printf("Tipo de dado: %s\n",yytext); return (VARIAVEL);}
 "#"[a-zA-Z][a-zA-Z0-9]* {adjust(); tok = STRING ; yylval.var=yytext; write_file(); printf("STRING: %s\n",yytext); return (STRING);}
+"&"[a-zA-Z][a-zA-Z0-9]* {adjust(); tok = STRING2; yylval.var=yytext; write_file(); printf("STRING2: %s\n", yytext); return (STRING2);}
 
 %%

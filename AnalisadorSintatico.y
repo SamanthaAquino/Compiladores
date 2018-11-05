@@ -30,6 +30,7 @@
 %token <real> 	 REAL
 %token <var>     VARIAVEL
 %token <var>     STRING
+%token <var>     STRING2
 
 %token FUNCTION
 %token ENDFUNCTION
@@ -188,6 +189,7 @@ Expressao: Tipo OPSOMA Tipo { $$ = (No*)malloc(sizeof(No));
 						    $$->lookahead1 = NULL;
 						    $$->lookahead2 = NULL;
 						  };
+
 Relacional: Tipo OPMAIORIGUAL Tipo { $$ = (No*)malloc(sizeof(No));
 									 $$->num = OPMAIORIGUAL;
 									 $$->esq = $1;
@@ -239,9 +241,9 @@ Condicao: IF ABREP Relacional FECHAP ABREC Corpo FECHAC { $$ = (No*)malloc(sizeo
 											$$->lookahead2 = NULL;
 										  };
 
-Repeticao: WHILE ABREP Relacional FECHAP Corpo { $$ = (No*)malloc(sizeof(No));
+Repeticao: WHILE ABREP Relacional FECHAP ABREC Corpo FECHAC { $$ = (No*)malloc(sizeof(No));
 											   $$->num = WHILE;
-											   $$->esq = $5;
+											   $$->esq = $6;
 											   $$->dir = NULL;
 											   $$->lookahead1 = $3;
 											   $$->lookahead2 = NULL;
@@ -262,6 +264,14 @@ Saida: ESCREVA STRING FIMCOMANDO { $$ = (No*)malloc(sizeof(No));
 							$$->lookahead1 = NULL;
 							$$->lookahead2 = NULL;
 						  };
+	| ESCREVA STRING2 FIMCOMANDO { $$ = (No*)malloc(sizeof(No));
+									$$->num = ESCREVA;
+								    $$->esq = NULL;
+									$$->dir = NULL;
+									$$->lookahead1 = NULL;
+									$$->lookahead2 = NULL;
+								 };
+
 Retorna: ENDFUNCTION { $$ = (No*)malloc(sizeof(No));
 						  $$->num = ENDFUNCTION;
 						  $$->esq = NULL;
