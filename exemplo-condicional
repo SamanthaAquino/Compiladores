@@ -1,14 +1,21 @@
 function
 
-	i nota = 9.
+	r nota1 = 6.
+	r nota2 = 5.
 
-	if(nota >: 7)
+	i media = nota1+nota2.
+	media = media/2.
+
+	if (media < 6,0)
 	{
-		out &PASSAMOTHATY.
+		out #media.
+		out &Exame.
 	}
-	if(nota <: 6)
+
+	if (media >: 6,0)
 	{
-		out &Reprovamos.
+		out #media.
+		out &Aprovado.
 	}
 
 endfunction
