@@ -22,7 +22,7 @@ int main(int argc, char **argv)
 	}
 	remove(filename);
 	arqtoken = fopen(filename, "w");
-	fprintf(arqtoken, "Token\t\t\t\tPosicao\t\t\t\tValor\t\t\n\n");
+	fprintf(arqtoken, "Token\t\t\t\tValor\t\t\n\n");
 	parse(argv[1]);
 	return 0;
 }
