@@ -8,6 +8,6 @@ gcc -g -c y.tab.c
 gcc -g -c parsetest.c
 gcc -g -o Analisador parsetest.o y.tab.o lex.yy.o errormsg.o util.o
 
-./Analisador exemplo
+./Analisador exemplo-condicional
 gcc -g programa.c -o programa
 ./programa

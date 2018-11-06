@@ -351,8 +351,8 @@ static void yynoreturn yy_fatal_error ( const char* msg  );
 	(yy_hold_char) = *yy_cp; \
 	*yy_cp = '\0'; \
 	(yy_c_buf_p) = yy_cp;
-#define YY_NUM_RULES 33
-#define YY_END_OF_BUFFER 34
+#define YY_NUM_RULES 34
+#define YY_END_OF_BUFFER 35
 /* This struct is not used in this scanner,
    but its presence is necessary. */
 struct yy_trans_info
@@ -360,32 +360,33 @@ struct yy_trans_info
 	flex_int32_t yy_verify;
 	flex_int32_t yy_nxt;
 	};
-static const flex_int16_t yy_accept[59] =
+static const flex_int16_t yy_accept[70] =
     {   0,
-        0,    0,   34,   33,   13,    2,    6,   14,   22,   12,
-       23,    7,   11,   31,   16,   19,   10,   20,   30,   29,
-       30,   27,   30,   28,   30,   30,    1,   24,    5,   15,
-        0,   31,   17,   18,   30,   30,   26,    9,   30,   30,
-       30,   21,   31,   30,   30,    4,   30,   30,    0,   30,
-       25,   30,   30,    3,   30,   30,    8,    0
+        0,    0,   35,   34,   34,   15,   34,    3,    4,   16,
+       17,   18,    5,   14,   29,   20,   22,   13,   24,   31,
+       28,   31,   31,   26,   31,   27,   31,    1,    6,    2,
+       19,   32,   33,    0,   29,   21,   23,   31,   31,   31,
+        8,   11,   31,   31,   25,   32,   33,   30,   29,   31,
+       31,   10,   31,   31,   31,   31,   31,   31,    7,   31,
+       31,   31,   31,   31,    9,   31,   31,   12,    0
     } ;
 
 static const YY_CHAR yy_ec[256] =
     {   0,
+        1,    1,    1,    1,    1,    1,    1,    1,    1,    2,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    1,    1,    2,    1,    1,    3,
-        4,    5,    6,    7,    8,    9,   10,   11,   12,   12,
-       12,   12,   12,   12,   12,   12,   11,   13,   14,   15,
+        1,    1,    1,    1,    3,    1,    4,    5,    1,    6,
+        7,    8,    9,    1,   10,   11,   12,   13,   13,   13,
+       13,   13,   13,   13,   13,   13,   13,   14,    1,   15,
        16,   17,    1,    1,   18,   18,   18,   18,   18,   18,
        18,   18,   18,   18,   18,   18,   18,   18,   18,   18,
        18,   18,   18,   18,   18,   18,   18,   18,   18,   18,
         1,    1,    1,    1,    1,    1,   18,   18,   19,   20,
 
        21,   22,   18,   23,   24,   18,   18,   25,   18,   26,
-       27,   18,   18,   28,   29,   30,   31,   18,   32,   18,
-       18,   18,   33,   34,   35,   36,    1,    1,    1,    1,
+       27,   18,   18,   28,   18,   29,   30,   18,   31,   18,
+       18,   18,   32,   33,   34,   35,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
@@ -402,74 +403,70 @@ static const YY_CHAR yy_ec[256] =
         1,    1,    1,    1,    1
     } ;
 
-static const YY_CHAR yy_meta[37] =
+static const YY_CHAR yy_meta[36] =
     {   0,
-        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    1,    1,    1,    2,    2,    2,
-        2,    2,    2,    2,    2,    2,    2,    2,    2,    2,
-        2,    2,    1,    1,    1,    1
+        1,    2,    1,    1,    1,    1,    1,    1,    1,    1,
+        1,    1,    3,    1,    1,    1,    1,    4,    4,    4,
+        4,    4,    4,    4,    4,    4,    4,    4,    4,    4,
+        4,    1,    1,    1,    1
     } ;
 
-static const flex_int16_t yy_base[61] =
+static const flex_int16_t yy_base[76] =
     {   0,
-        0,    0,  108,  116,  116,  116,  116,  116,  116,  116,
-      116,  116,  116,   28,  116,   94,  116,   90,    0,    0,
-       67,   16,   54,    0,   51,   44,  116,  116,  116,   50,
-       32,   35,  116,  116,   37,   39,   41,   43,   45,   47,
-       50,  116,   55,    0,   57,   59,   66,   68,   70,   72,
-       76,   78,   80,   83,   85,   89,   94,  116,   58,   43
+        0,    0,   80,   81,    0,   81,    0,   81,   81,   81,
+       81,   81,   81,   81,   66,   81,   64,   81,   63,    0,
+        0,   50,   45,   14,   44,    0,   50,   81,   81,   81,
+       58,    0,    0,   58,   57,   81,   81,    0,   49,   42,
+        0,    0,   38,   42,   81,    0,    0,   52,   51,   41,
+       43,    0,   36,   30,   30,   37,   31,   32,    0,   36,
+       27,   24,   26,   27,    0,   15,   13,    0,   81,   34,
+       33,   40,   42,   44,   46
     } ;
 
-static const flex_int16_t yy_def[61] =
+static const flex_int16_t yy_def[76] =
     {   0,
-       58,    1,   58,   58,   58,   58,   58,   58,   58,   58,
-       58,   58,   58,   58,   58,   58,   58,   58,   59,   59,
-       59,   59,   59,   59,   59,   59,   58,   58,   58,   58,
-       58,   58,   58,   58,   59,   59,   59,   59,   59,   59,
-       59,   58,   58,   60,   59,   59,   59,   59,   58,   59,
-       59,   59,   59,   59,   59,   59,   59,    0,   58,   58
+       69,    1,   69,   69,   70,   69,   71,   69,   69,   69,
+       69,   69,   69,   69,   72,   69,   69,   69,   69,   73,
+       73,   73,   73,   73,   73,   73,   73,   69,   69,   69,
+       69,   74,   75,   69,   72,   69,   69,   73,   73,   73,
+       73,   73,   73,   73,   69,   74,   75,   69,   72,   73,
+       73,   73,   73,   73,   73,   73,   73,   73,   73,   73,
+       73,   73,   73,   73,   73,   73,   73,   73,    0,   69,
+       69,   69,   69,   69,   69
     } ;
 
-static const flex_int16_t yy_nxt[153] =
+static const flex_int16_t yy_nxt[117] =
     {   0,
-        4,    5,    6,    7,    8,    9,   10,   11,   12,   13,
-       14,   14,   15,   10,   16,   17,   18,   19,   20,   19,
-       19,   21,   19,   22,   19,   19,   23,   24,   25,   19,
-       19,   26,   27,   28,   29,   30,   31,   37,   32,   32,
-       43,   38,   43,   31,   49,   32,   32,   44,   44,   44,
-       44,   44,   44,   44,   44,   44,   44,   44,   44,   35,
-       44,   44,   42,   43,   45,   43,   41,   44,   44,   44,
-       44,   40,   47,   48,   46,   50,   44,   44,   44,   44,
-       44,   44,   44,   44,   39,   51,   44,   44,   44,   44,
-       44,   44,   52,   44,   44,   44,   44,   36,   54,   44,
+        4,    4,    5,    6,    7,    8,    9,   10,   11,   12,
+       13,   14,   15,   16,   17,   18,   19,   20,   21,   20,
+       22,   23,   20,   24,   20,   20,   25,   26,   20,   20,
+       27,   28,   29,   30,   31,   41,   33,   32,   68,   42,
+       34,   67,   34,   34,   38,   38,   46,   46,   47,   47,
+       66,   65,   64,   63,   62,   61,   60,   59,   58,   57,
+       56,   55,   54,   49,   48,   53,   52,   51,   50,   49,
+       48,   45,   44,   43,   40,   39,   37,   36,   35,   69,
+        3,   69,   69,   69,   69,   69,   69,   69,   69,   69,
+       69,   69,   69,   69,   69,   69,   69,   69,   69,   69,
 
-       44,   53,   34,   55,   44,   44,   33,   58,   58,   58,
-       58,   56,   58,   58,   57,    3,   58,   58,   58,   58,
-       58,   58,   58,   58,   58,   58,   58,   58,   58,   58,
-       58,   58,   58,   58,   58,   58,   58,   58,   58,   58,
-       58,   58,   58,   58,   58,   58,   58,   58,   58,   58,
-       58,   58
+       69,   69,   69,   69,   69,   69,   69,   69,   69,   69,
+       69,   69,   69,   69,   69,   69
     } ;
 
-static const flex_int16_t yy_chk[153] =
+static const flex_int16_t yy_chk[117] =
     {   0,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    1,    1,   14,   22,   14,   14,
-       31,   22,   31,   32,   60,   32,   32,   35,   35,   36,
-       36,   37,   37,   38,   38,   39,   39,   40,   40,   59,
-       41,   41,   30,   43,   36,   43,   26,   45,   45,   46,
-       46,   25,   40,   41,   39,   45,   47,   47,   48,   48,
-       49,   49,   50,   50,   23,   47,   51,   51,   52,   52,
-       53,   53,   48,   54,   54,   55,   55,   21,   52,   56,
+        1,    1,    1,    1,    1,   24,   71,   70,   67,   24,
+       72,   66,   72,   72,   73,   73,   74,   74,   75,   75,
+       64,   63,   62,   61,   60,   58,   57,   56,   55,   54,
+       53,   51,   50,   49,   48,   44,   43,   40,   39,   35,
+       34,   31,   27,   25,   23,   22,   19,   17,   15,    3,
+       69,   69,   69,   69,   69,   69,   69,   69,   69,   69,
+       69,   69,   69,   69,   69,   69,   69,   69,   69,   69,
 
-       56,   50,   18,   53,   57,   57,   16,    3,    0,    0,
-        0,   55,    0,    0,   56,   58,   58,   58,   58,   58,
-       58,   58,   58,   58,   58,   58,   58,   58,   58,   58,
-       58,   58,   58,   58,   58,   58,   58,   58,   58,   58,
-       58,   58,   58,   58,   58,   58,   58,   58,   58,   58,
-       58,   58
+       69,   69,   69,   69,   69,   69,   69,   69,   69,   69,
+       69,   69,   69,   69,   69,   69
     } ;
 
 static yy_state_type yy_last_accepting_state;
@@ -488,15 +485,189 @@ int yy_flex_debug = 0;
 char *yytext;
 #line 1 "AnalisadorLexico.l"
 #line 2 "AnalisadorLexico.l"
-	#include <stdio.h>
 	#include <stdlib.h>
+	#include <stdio.h>
 	#include <string.h>
-	#include <math.h>
+	#include "util.h"
+	#include "y.tab.h"
+	#include "errormsg.h"
+	
+	YYSTYPE yylval;
+	int tok, charPos=1;
+	
+	string toknames[] = {"ABREC","ABREP","FECHAC","FECHAP","FIMCOMANDO","PIPE","WHILE","IF","FUNCTION","SEND","ESCREVA","LEIA","OPATRIBUICAO","OPDIVISAO","OPMOD","OPMULTIPLICACAO","OPSOMA","OPSUBTRACAO","OPNEGACAO","OPCOMPARACAO","OPMENORIGUAL","OPMENOR","OPMAIORIGUAL","OPMAIOR","OPDIFERENTE","TIPOINT","TIPOREAL","TIPOCHAR","INTEIRO","REAL","VARIAVEL","STRING"};
 
-	#include "AnalisadorSintatico.h"
-    #include "AnalisadorSintatico.tab.h"
-#line 499 "lex.yy.c"
-#line 500 "lex.yy.c"
+	string tokname(int tok)
+	{
+		return tok<258 || tok>299 ? "BAD_TOKEN" : toknames[tok-258];
+	}
+
+	int yywrap(void)
+	{
+		charPos=1;
+		return 1;
+	}
+
+	void adjust(void)
+	{
+		EM_tokPos=charPos;
+		charPos+=yyleng;
+	}
+
+	void write_file(void)
+	{
+		FILE *arqtoken;
+		FILE *arq;
+		char filename[] = "tokens.txt";
+		char filename2[] = "programa.c";
+		arqtoken = fopen(filename, "a");
+		arq = fopen(filename2, "a");
+
+		switch(tok) {
+			case FUNCTION:
+				fprintf(arq,"#include<stdio.h>\n#include<stdlib.h>\n\nint main(){\n");
+				fprintf(arqtoken,"%s\t\t\t\t%d\t\t\t\t\n",tokname(tok), EM_tokPos);				
+				break;
+			case ESCREVA:
+				fprintf(arq,"printf");
+				fprintf(arqtoken,"%s\t\t\t\t%d\t\t\t\t\n",tokname(tok), EM_tokPos);
+
+				break;
+			case LEIA:
+				fprintf(arq,"scanf");
+				fprintf(arqtoken,"%s\t\t\t\t%d\t\t\t\t\n",tokname(tok), EM_tokPos);
+				break;
+			case ABREC:
+				fprintf(arq,"{\n");
+				fprintf(arqtoken,"%s\t\t\t\t%d\t\t\t\t\n",tokname(tok), EM_tokPos);
+				break;
+			case ENDFUNCTION:
+				fprintf(arq,"\nreturn 0;\n}\n");
+				fprintf(arqtoken,"%s\t\t\t\t%d\t\t\t\t\n",tokname(tok), EM_tokPos);
+				break;
+			case FECHAC:
+				fprintf(arq,"}\n");
+				fprintf(arqtoken,"%s\t\t\t\t%d\t\t\t\t\n",tokname(tok), EM_tokPos);
+				break;
+			case IF:
+				fprintf(arq,"if");
+				fprintf(arqtoken,"%s\t\t\t\t%d\t\t\t\t\n",tokname(tok), EM_tokPos);			
+				break;
+			case WHILE:
+				fprintf(arq,"while");
+				fprintf(arqtoken,"%s\t\t\t\t%d\t\t\t\t\n",tokname(tok), EM_tokPos);				
+				break;
+			case ABREP:
+				fprintf(arq,"(");
+				fprintf(arqtoken,"%s\t\t\t\t%d\t\t\t\t\n",tokname(tok), EM_tokPos);
+				break;
+			case FECHAP:
+				fprintf(arq,")");
+				fprintf(arqtoken,"%s\t\t\t\t%d\t\t\t\t\n",tokname(tok), EM_tokPos);
+				break;
+			case FIMCOMANDO:
+				fprintf(arq,";\n");
+				fprintf(arqtoken,"%s\t\t\t\t%d\t\t\t\t\n",tokname(tok), EM_tokPos);				
+				break;
+			case PIPE:
+				fprintf(arq,",");
+				fprintf(arqtoken,"%s\t\t\t\t%d\t\t\t\t\n",tokname(tok), EM_tokPos);
+				break;
+			case OPATRIBUICAO:
+				fprintf(arq," = ");
+				fprintf(arqtoken,"%s\t\t\t\t%d\t\t\t\t\n",tokname(tok), EM_tokPos);
+				break;
+			case OPDIVISAO:
+				fprintf(arq," / ");
+				fprintf(arqtoken,"%s\t\t\t\t%s\t\t\t\t\n",tokname(tok), EM_tokPos);				
+				break;
+			case OPMOD:
+				fprintf(arq," % ");
+				fprintf(arqtoken,"%s\t\t\t\t%d\t\t\t\t\n",tokname(tok), EM_tokPos);
+				break;
+			case OPMULTIPLICACAO:
+				fprintf(arq," * ");
+				fprintf(arqtoken,"%s\t\t\t\t%d\t\t\t\t\n",tokname(tok), EM_tokPos);
+				break;
+			case OPSOMA:
+				fprintf(arq," + ");
+				fprintf(arqtoken,"%s\t\t\t\t%d\t\t\t\t\n",tokname(tok), EM_tokPos);				
+				break;
+			case OPSUBTRACAO:
+				fprintf(arq," - ");
+				fprintf(arqtoken,"%s\t\t\t\t%d\t\t\t\t\n",tokname(tok), EM_tokPos);
+				break;
+			case OPNEGACAO:
+				fprintf(arq," ! ");
+				fprintf(arqtoken,"%s\t\t\t\t%d\t\t\t\t\n",tokname(tok), EM_tokPos);
+				break;
+			case OPCOMPARACAO:
+				fprintf(arq," == ");
+				fprintf(arqtoken,"%s\t\t\t\t%d\t\t\t\t\n",tokname(tok), EM_tokPos);				
+				break;
+			case OPMENORIGUAL:
+				fprintf(arq," <= ");
+				fprintf(arqtoken,"%s\t\t\t\t%d\t\t\t\t\n",tokname(tok), EM_tokPos);
+				break;
+			case OPMENOR:
+				fprintf(arq," < ");
+				fprintf(arqtoken,"%s\t\t\t\t%d\t\t\t\t\n",tokname(tok), EM_tokPos);				
+				break;
+			case OPMAIORIGUAL:
+				fprintf(arq," >= ");
+				fprintf(arqtoken,"%s\t\t\t\t%d\t\t\t\t\n",tokname(tok), EM_tokPos);
+				break;
+			case OPMAIOR:
+				fprintf(arq," > ");
+				fprintf(arqtoken,"%s\t\t\t\t%d\t\t\t\t\n",tokname(tok), EM_tokPos);
+				break;
+			case OPDIFERENTE:
+				fprintf(arq," != ");
+				fprintf(arqtoken,"%s\t\t\t\t%d\t\t\t\t\n",tokname(tok), EM_tokPos);
+				break;
+			case TIPOINT:
+				fprintf(arq,"int ");
+				fprintf(arqtoken,"%s\n\n\n\n%d\t\t\t\t\n",tokname(tok), EM_tokPos);
+				break;
+			case TIPOREAL:
+				fprintf(arq,"float ");
+				fprintf(arqtoken,"%s\t\t\t\t%d\t\t\t\t\n",tokname(tok), EM_tokPos);
+				break;
+			case TIPOCHAR:
+				fprintf(arq,"char ");
+				fprintf(arqtoken,"%s\t\t\t\t%d\t\t\t\t\n",tokname(tok), EM_tokPos);
+				break;
+			case INTEIRO:
+				fprintf(arq,"%d",yylval.inteiro);
+				fprintf(arqtoken,"%s\t\t\t\t%d\t\t\t\t\n",tokname(tok), EM_tokPos);
+				break;
+			case REAL:
+				fprintf(arq,"%.2f",yylval.real);
+				fprintf(arqtoken,"%s\t\t\t\t%d\t\t\t\t\n",tokname(tok), EM_tokPos);
+				break;
+			case VARIAVEL:
+				fprintf(arq,"%s",yylval.var);
+				fprintf(arqtoken,"%s\t\t\t\t%d\t\t\t\t\n",tokname(tok), EM_tokPos);
+				break;
+			case STRING:
+				yylval.var = yylval.var + 1;
+				fprintf(arq,"(\"%%d \\n \", %s)", yylval.var);
+				fprintf(arqtoken,"%s\t\t\t\t%d\t\t\t\t\n",tokname(tok), EM_tokPos);
+				break;
+			case STRING2:
+				yylval.var = yylval.var + 1;
+				fprintf(arq,"(\"%s \\n \")", yylval.var);
+				fprintf(arqtoken, "%s\t\t\t\t%d\t\t\t\t\n", tokname(tok), EM_tokPos);
+				break;
+			default:
+				fprintf(arqtoken,"%s\t\t\t\t%d\t\t\t\t\n",tokname(tok), EM_tokPos);
+		}
+
+		fclose(arqtoken);
+		fclose(arq);
+	}
+#line 670 "lex.yy.c"
+#line 671 "lex.yy.c"
 
 #define INITIAL 0
 
@@ -713,9 +884,9 @@ YY_DECL
 		}
 
 	{
-#line 11 "AnalisadorLexico.l"
+#line 185 "AnalisadorLexico.l"
 
-#line 719 "lex.yy.c"
+#line 890 "lex.yy.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -742,13 +913,13 @@ yy_match:
 			while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 				{
 				yy_current_state = (int) yy_def[yy_current_state];
-				if ( yy_current_state >= 59 )
+				if ( yy_current_state >= 70 )
 					yy_c = yy_meta[yy_c];
 				}
 			yy_current_state = yy_nxt[yy_base[yy_current_state] + yy_c];
 			++yy_cp;
 			}
-		while ( yy_base[yy_current_state] != 116 );
+		while ( yy_base[yy_current_state] != 81 );
 
 yy_find_action:
 		yy_act = yy_accept[yy_current_state];
@@ -774,170 +945,175 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 12 "AnalisadorLexico.l"
-{ return ABREC; }
+#line 186 "AnalisadorLexico.l"
+{adjust(); tok = ABREC ; write_file(); printf("Abre Chave: %s\n", yytext); return (ABREC);}
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 13 "AnalisadorLexico.l"
-{ return ABREP; }   
+#line 187 "AnalisadorLexico.l"
+{adjust(); tok = FECHAC ; write_file(); printf("Fecha Chave: %s\n", yytext); return (FECHAC);}
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 14 "AnalisadorLexico.l"
-{ return WHILE; }
+#line 188 "AnalisadorLexico.l"
+{adjust(); tok = ABREP ; write_file(); printf("Abre Parentese: %s\n", yytext); return (ABREP);}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 15 "AnalisadorLexico.l"
-{ return ESCREVA; }
+#line 189 "AnalisadorLexico.l"
+{adjust(); tok = FECHAP ; write_file(); printf("Fecha Parentese: %s\n",yytext); return (FECHAP);}
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 16 "AnalisadorLexico.l"
-{ return FECHAC; }
+#line 190 "AnalisadorLexico.l"
+{adjust(); tok = FIMCOMANDO ; write_file(); printf("Fim Comando: %s\n",yytext); return (FIMCOMANDO);}
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 17 "AnalisadorLexico.l"
-{ return FECHAP; }
+#line 191 "AnalisadorLexico.l"
+{adjust(); tok = PIPE ; write_file(); printf("Pipe: %s\n",yytext); return (PIPE);}
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 18 "AnalisadorLexico.l"
-{ return FIMCOMANDO; }
+#line 193 "AnalisadorLexico.l"
+{adjust(); tok = WHILE ; write_file(); printf("Comando de repeticao: %s\n", yytext); return (WHILE);}
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 19 "AnalisadorLexico.l"
-{ return FUNCTION; }
+#line 194 "AnalisadorLexico.l"
+{adjust(); tok = IF ; write_file(); printf("Comando condicional: %s\n",yytext); return (IF);}
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 20 "AnalisadorLexico.l"
-{ return LEIA; }
+#line 195 "AnalisadorLexico.l"
+{adjust(); tok = FUNCTION ; write_file(); printf("Palavra reservada: %s\n", yytext); return (FUNCTION);}
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 21 "AnalisadorLexico.l"
-{ return OPATRIBUICAO; }
+#line 196 "AnalisadorLexico.l"
+{adjust(); tok = ESCREVA ; write_file(); printf("Palavra reservada: %s\n", yytext); return (ESCREVA);}
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 22 "AnalisadorLexico.l"
-{ return OPDIVISAO; }
+#line 197 "AnalisadorLexico.l"
+{adjust(); tok = LEIA ; write_file(); printf("Palavra reservada: %s\n", yytext); return (LEIA);}
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 23 "AnalisadorLexico.l"
-{ return OPLOGICO; }      /* Separar operadores lógicos e alterar (??) */
+#line 198 "AnalisadorLexico.l"
+{adjust(); tok = ENDFUNCTION ; write_file(); printf("Palavra reservada: %s\n", yytext); return (ENDFUNCTION);}
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 24 "AnalisadorLexico.l"
-{ return OPMOD; }
+#line 200 "AnalisadorLexico.l"
+{adjust(); tok = OPATRIBUICAO ; write_file(); printf("Atribuicao: %s\n",yytext); return (OPATRIBUICAO);}
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 25 "AnalisadorLexico.l"
-{ return OPMULTIPLICACAO; }
+#line 201 "AnalisadorLexico.l"
+{adjust(); tok = OPDIVISAO ; write_file(); printf("Divisao: %s\n", yytext); return (OPDIVISAO);}
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 26 "AnalisadorLexico.l"
-{ return OPNEGACAO; }
+#line 202 "AnalisadorLexico.l"
+{adjust(); tok = OPMOD ; write_file(); printf("MOD: %s\n", yytext); return (OPMOD);}
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 27 "AnalisadorLexico.l"
-{ return OPCOMPARACAO; }
+#line 203 "AnalisadorLexico.l"
+{adjust(); tok = OPMULTIPLICACAO ; write_file(); printf("Multiplicação: %s\n", yytext); return (OPMULTIPLICACAO);}
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 28 "AnalisadorLexico.l"
-{ return OPMENORIGUAL; }
+#line 204 "AnalisadorLexico.l"
+{adjust(); tok = OPSOMA ; write_file(); printf("Soma: %s\n", yytext); return (OPSOMA);}
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 29 "AnalisadorLexico.l"
-{ return OPMAIORIGUAL; }
+#line 205 "AnalisadorLexico.l"
+{adjust(); tok = OPSUBTRACAO ; write_file(); printf("Subtração: %s\n",yytext); return (OPSUBTRACAO);}
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 30 "AnalisadorLexico.l"
-{ return OPMENOR; }
+#line 206 "AnalisadorLexico.l"
+{adjust(); tok = OPNEGACAO ; write_file(); printf("Negação: %s\n",yytext); return (OPNEGACAO);}
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 31 "AnalisadorLexico.l"
-{ return OPMAIOR; }
+#line 207 "AnalisadorLexico.l"
+{adjust(); tok = OPCOMPARACAO ; write_file(); printf("Comparação: %s\n",yytext); return (OPCOMPARACAO);}
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 32 "AnalisadorLexico.l"
-{ return OPDIFERENTE; }
+#line 208 "AnalisadorLexico.l"
+{adjust(); tok = OPMENORIGUAL ; write_file(); printf("Menor igual: %s\n",yytext); return (OPMENORIGUAL);}
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 33 "AnalisadorLexico.l"
-{ return OPSOMA; }
+#line 209 "AnalisadorLexico.l"
+{adjust(); tok = OPMENOR ; write_file(); printf("Menor: %s\n",yytext); return (OPMENOR);}
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 34 "AnalisadorLexico.l"
-{ return OPSUBTRACAO; }
+#line 210 "AnalisadorLexico.l"
+{adjust(); tok = OPMAIORIGUAL ; write_file(); printf("Maior igual: %s\n",yytext); return (OPMAIORIGUAL);}
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 35 "AnalisadorLexico.l"
-{ return PIPE; }
+#line 211 "AnalisadorLexico.l"
+{adjust(); tok = OPMAIOR ; write_file(); printf("Maior: %s\n",yytext); return (OPMAIOR);}
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 36 "AnalisadorLexico.l"
-{ return SEND; }
+#line 212 "AnalisadorLexico.l"
+{adjust(); tok = OPDIFERENTE ; write_file(); printf("Diferente: %s\n",yytext); return (OPDIFERENTE);}
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 37 "AnalisadorLexico.l"
-{ return IF; }
+#line 214 "AnalisadorLexico.l"
+{adjust(); tok = TIPOINT ; write_file(); printf("Tipo de dado: %s\n",yytext); return (TIPOINT);}
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 38 "AnalisadorLexico.l"
-{ return TIPOINT; }
+#line 215 "AnalisadorLexico.l"
+{adjust(); tok = TIPOREAL ; write_file(); printf("Tipo de dado: %s\n",yytext); return (TIPOREAL);}
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 39 "AnalisadorLexico.l"
-{ return TIPOREAL; }
+#line 216 "AnalisadorLexico.l"
+{adjust(); tok = TIPOCHAR ; write_file(); printf("Tipo de dado: %s\n",yytext); return (TIPOCHAR);}
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 40 "AnalisadorLexico.l"
-{ return TIPOCARACTERE; }
+#line 218 "AnalisadorLexico.l"
+{adjust(); tok = INTEIRO ; yylval.inteiro=atoi(yytext); write_file(); printf("Tipo de dado: %s\n",yytext); return (INTEIRO);}
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 41 "AnalisadorLexico.l"
-{ strncpy(yylval.pont->nome, yytext, 256); return VARIAVEL; }    
+#line 219 "AnalisadorLexico.l"
+{adjust(); tok = REAL ; yylval.real=atof(yytext); write_file(); printf("Tipo de dado: %s\n",yytext); return (REAL);}
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
-#line 42 "AnalisadorLexico.l"
-{ yylval.pont->val = atof(yytext); return REAL; }                
+#line 220 "AnalisadorLexico.l"
+{adjust(); tok = VARIAVEL ; yylval.var=yytext; write_file(); printf("Tipo de dado: %s\n",yytext); return (VARIAVEL);}
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 43 "AnalisadorLexico.l"
-{ yylval.pont->tokint = atoi(yytext); return INTEIRO; }          
+#line 221 "AnalisadorLexico.l"
+{adjust(); tok = STRING ; yylval.var=yytext; write_file(); printf("STRING: %s\n",yytext); return (STRING);}
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
-#line 45 "AnalisadorLexico.l"
+#line 222 "AnalisadorLexico.l"
+{adjust(); tok = STRING2; yylval.var=yytext; write_file(); printf("STRING2: %s\n", yytext); return (STRING2);}
+	YY_BREAK
+case 34:
+YY_RULE_SETUP
+#line 224 "AnalisadorLexico.l"
 ECHO;
 	YY_BREAK
-#line 941 "lex.yy.c"
+#line 1117 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1234,7 +1410,7 @@ static int yy_get_next_buffer (void)
 		while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 			{
 			yy_current_state = (int) yy_def[yy_current_state];
-			if ( yy_current_state >= 59 )
+			if ( yy_current_state >= 70 )
 				yy_c = yy_meta[yy_c];
 			}
 		yy_current_state = yy_nxt[yy_base[yy_current_state] + yy_c];
@@ -1262,11 +1438,11 @@ static int yy_get_next_buffer (void)
 	while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 		{
 		yy_current_state = (int) yy_def[yy_current_state];
-		if ( yy_current_state >= 59 )
+		if ( yy_current_state >= 70 )
 			yy_c = yy_meta[yy_c];
 		}
 	yy_current_state = yy_nxt[yy_base[yy_current_state] + yy_c];
-	yy_is_jam = (yy_current_state == 58);
+	yy_is_jam = (yy_current_state == 69);
 
 		return yy_is_jam ? 0 : yy_current_state;
 }
@@ -1942,10 +2118,5 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 45 "AnalisadorLexico.l"
-
-
-int yywrap (void) {
-	return 1;
-}
+#line 224 "AnalisadorLexico.l"
 

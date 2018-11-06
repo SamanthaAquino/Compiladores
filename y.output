@@ -1,0 +1,1077 @@
+Terminais sem uso na gramática
+
+   OPNEGACAO
+   PIPE
+
+
+Gramática
+
+    0 $accept: Programa $end
+
+    1 Programa: FUNCTION Corpo ENDFUNCTION
+
+    2 Corpo: %empty
+    3      | Calculo
+    4      | Atribuicao
+    5      | Declaracao
+    6      | Condicao
+    7      | Repeticao
+    8      | Entrada
+    9      | Saida
+
+   10 Tipo: INTEIRO
+   11     | REAL
+   12     | VARIAVEL
+
+   13 Atribuicao: VARIAVEL OPATRIBUICAO TipoAtri
+
+   14 TipoAtri: Atri_num
+   15         | Calculo
+
+   16 Atri_num: Tipo FIMCOMANDO Corpo
+
+   17 Declaracao: TIPOINT VARIAVEL Declaracao2
+   18           | TIPOREAL VARIAVEL Declaracao2
+   19           | TIPOCHAR VARIAVEL Declaracao2
+
+   20 Declaracao2: OPATRIBUICAO TipoAtri
+   21            | FIMCOMANDO
+
+   22 Calculo: Expressao FIMCOMANDO Corpo
+
+   23 Expressao: Tipo OPSOMA Tipo
+   24          | Tipo OPSUBTRACAO Tipo
+   25          | Tipo OPMULTIPLICACAO Tipo
+   26          | Tipo OPDIVISAO Tipo
+   27          | Tipo OPMOD Tipo
+
+   28 Relacional: Tipo OPMAIORIGUAL Tipo
+   29           | Tipo OPMAIOR Tipo
+   30           | Tipo OPMENORIGUAL Tipo
+   31           | Tipo OPMENOR Tipo
+   32           | Tipo OPCOMPARACAO Tipo
+   33           | Tipo OPDIFERENTE Tipo
+
+   34 Condicao: IF ABREP Relacional FECHAP ABREC Corpo FECHAC Corpo
+
+   35 Repeticao: WHILE ABREP Relacional FECHAP ABREC Corpo FECHAC
+
+   36 Entrada: LEIA Tipo FIMCOMANDO Corpo
+
+   37 Saida: ESCREVA STRING FIMCOMANDO Corpo
+   38      | ESCREVA STRING2 FIMCOMANDO Corpo
+
+
+Terminais, com as regras onde eles aparecem
+
+$end (0) 0
+error (256)
+INTEIRO (258) 10
+REAL (259) 11
+VARIAVEL (260) 12 13 17 18 19
+STRING (261) 37
+STRING2 (262) 38
+FUNCTION (263) 1
+ENDFUNCTION (264) 1
+ESCREVA (265) 37 38
+LEIA (266) 36
+IF (267) 34
+WHILE (268) 35
+OPNEGACAO (269)
+OPCOMPARACAO (270) 32
+OPMENORIGUAL (271) 30
+OPMENOR (272) 31
+OPMAIORIGUAL (273) 28
+OPMAIOR (274) 29
+OPDIFERENTE (275) 33
+OPSOMA (276) 23
+OPSUBTRACAO (277) 24
+OPMULTIPLICACAO (278) 25
+OPDIVISAO (279) 26
+OPMOD (280) 27
+OPATRIBUICAO (281) 13 20
+TIPOINT (282) 17
+TIPOCHAR (283) 19
+TIPOREAL (284) 18
+ABREC (285) 34 35
+FECHAC (286) 34 35
+ABREP (287) 34 35
+FECHAP (288) 34 35
+FIMCOMANDO (289) 16 21 22 36 37 38
+PIPE (290)
+
+
+Não terminais com as regras onde eles aparecem
+
+$accept (36)
+    à esquerda: 0
+Programa (37)
+    à esquerda: 1, à direita: 0
+Corpo (38)
+    à esquerda: 2 3 4 5 6 7 8 9, à direita: 1 16 22 34 35 36 37 38
+Tipo (39)
+    à esquerda: 10 11 12, à direita: 16 23 24 25 26 27 28 29 30 31
+    32 33 36
+Atribuicao (40)
+    à esquerda: 13, à direita: 4
+TipoAtri (41)
+    à esquerda: 14 15, à direita: 13 20
+Atri_num (42)
+    à esquerda: 16, à direita: 14
+Declaracao (43)
+    à esquerda: 17 18 19, à direita: 5
+Declaracao2 (44)
+    à esquerda: 20 21, à direita: 17 18 19
+Calculo (45)
+    à esquerda: 22, à direita: 3 15
+Expressao (46)
+    à esquerda: 23 24 25 26 27, à direita: 22
+Relacional (47)
+    à esquerda: 28 29 30 31 32 33, à direita: 34 35
+Condicao (48)
+    à esquerda: 34, à direita: 6
+Repeticao (49)
+    à esquerda: 35, à direita: 7
+Entrada (50)
+    à esquerda: 36, à direita: 8
+Saida (51)
+    à esquerda: 37 38, à direita: 9
+
+
+Estado 0
+
+    0 $accept: . Programa $end
+
+    FUNCTION  deslocar, e ir ao estado 1
+
+    Programa  ir ao estado 2
+
+
+Estado 1
+
+    1 Programa: FUNCTION . Corpo ENDFUNCTION
+
+    INTEIRO   deslocar, e ir ao estado 3
+    REAL      deslocar, e ir ao estado 4
+    VARIAVEL  deslocar, e ir ao estado 5
+    ESCREVA   deslocar, e ir ao estado 6
+    LEIA      deslocar, e ir ao estado 7
+    IF        deslocar, e ir ao estado 8
+    WHILE     deslocar, e ir ao estado 9
+    TIPOINT   deslocar, e ir ao estado 10
+    TIPOCHAR  deslocar, e ir ao estado 11
+    TIPOREAL  deslocar, e ir ao estado 12
+
+    $padrão  reduzir usando a regra 2 (Corpo)
+
+    Corpo       ir ao estado 13
+    Tipo        ir ao estado 14
+    Atribuicao  ir ao estado 15
+    Declaracao  ir ao estado 16
+    Calculo     ir ao estado 17
+    Expressao   ir ao estado 18
+    Condicao    ir ao estado 19
+    Repeticao   ir ao estado 20
+    Entrada     ir ao estado 21
+    Saida       ir ao estado 22
+
+
+Estado 2
+
+    0 $accept: Programa . $end
+
+    $end  deslocar, e ir ao estado 23
+
+
+Estado 3
+
+   10 Tipo: INTEIRO .
+
+    $padrão  reduzir usando a regra 10 (Tipo)
+
+
+Estado 4
+
+   11 Tipo: REAL .
+
+    $padrão  reduzir usando a regra 11 (Tipo)
+
+
+Estado 5
+
+   12 Tipo: VARIAVEL .
+   13 Atribuicao: VARIAVEL . OPATRIBUICAO TipoAtri
+
+    OPATRIBUICAO  deslocar, e ir ao estado 24
+
+    $padrão  reduzir usando a regra 12 (Tipo)
+
+
+Estado 6
+
+   37 Saida: ESCREVA . STRING FIMCOMANDO Corpo
+   38      | ESCREVA . STRING2 FIMCOMANDO Corpo
+
+    STRING   deslocar, e ir ao estado 25
+    STRING2  deslocar, e ir ao estado 26
+
+
+Estado 7
+
+   36 Entrada: LEIA . Tipo FIMCOMANDO Corpo
+
+    INTEIRO   deslocar, e ir ao estado 3
+    REAL      deslocar, e ir ao estado 4
+    VARIAVEL  deslocar, e ir ao estado 27
+
+    Tipo  ir ao estado 28
+
+
+Estado 8
+
+   34 Condicao: IF . ABREP Relacional FECHAP ABREC Corpo FECHAC Corpo
+
+    ABREP  deslocar, e ir ao estado 29
+
+
+Estado 9
+
+   35 Repeticao: WHILE . ABREP Relacional FECHAP ABREC Corpo FECHAC
+
+    ABREP  deslocar, e ir ao estado 30
+
+
+Estado 10
+
+   17 Declaracao: TIPOINT . VARIAVEL Declaracao2
+
+    VARIAVEL  deslocar, e ir ao estado 31
+
+
+Estado 11
+
+   19 Declaracao: TIPOCHAR . VARIAVEL Declaracao2
+
+    VARIAVEL  deslocar, e ir ao estado 32
+
+
+Estado 12
+
+   18 Declaracao: TIPOREAL . VARIAVEL Declaracao2
+
+    VARIAVEL  deslocar, e ir ao estado 33
+
+
+Estado 13
+
+    1 Programa: FUNCTION Corpo . ENDFUNCTION
+
+    ENDFUNCTION  deslocar, e ir ao estado 34
+
+
+Estado 14
+
+   23 Expressao: Tipo . OPSOMA Tipo
+   24          | Tipo . OPSUBTRACAO Tipo
+   25          | Tipo . OPMULTIPLICACAO Tipo
+   26          | Tipo . OPDIVISAO Tipo
+   27          | Tipo . OPMOD Tipo
+
+    OPSOMA           deslocar, e ir ao estado 35
+    OPSUBTRACAO      deslocar, e ir ao estado 36
+    OPMULTIPLICACAO  deslocar, e ir ao estado 37
+    OPDIVISAO        deslocar, e ir ao estado 38
+    OPMOD            deslocar, e ir ao estado 39
+
+
+Estado 15
+
+    4 Corpo: Atribuicao .
+
+    $padrão  reduzir usando a regra 4 (Corpo)
+
+
+Estado 16
+
+    5 Corpo: Declaracao .
+
+    $padrão  reduzir usando a regra 5 (Corpo)
+
+
+Estado 17
+
+    3 Corpo: Calculo .
+
+    $padrão  reduzir usando a regra 3 (Corpo)
+
+
+Estado 18
+
+   22 Calculo: Expressao . FIMCOMANDO Corpo
+
+    FIMCOMANDO  deslocar, e ir ao estado 40
+
+
+Estado 19
+
+    6 Corpo: Condicao .
+
+    $padrão  reduzir usando a regra 6 (Corpo)
+
+
+Estado 20
+
+    7 Corpo: Repeticao .
+
+    $padrão  reduzir usando a regra 7 (Corpo)
+
+
+Estado 21
+
+    8 Corpo: Entrada .
+
+    $padrão  reduzir usando a regra 8 (Corpo)
+
+
+Estado 22
+
+    9 Corpo: Saida .
+
+    $padrão  reduzir usando a regra 9 (Corpo)
+
+
+Estado 23
+
+    0 $accept: Programa $end .
+
+    $padrão  aceitar
+
+
+Estado 24
+
+   13 Atribuicao: VARIAVEL OPATRIBUICAO . TipoAtri
+
+    INTEIRO   deslocar, e ir ao estado 3
+    REAL      deslocar, e ir ao estado 4
+    VARIAVEL  deslocar, e ir ao estado 27
+
+    Tipo       ir ao estado 41
+    TipoAtri   ir ao estado 42
+    Atri_num   ir ao estado 43
+    Calculo    ir ao estado 44
+    Expressao  ir ao estado 18
+
+
+Estado 25
+
+   37 Saida: ESCREVA STRING . FIMCOMANDO Corpo
+
+    FIMCOMANDO  deslocar, e ir ao estado 45
+
+
+Estado 26
+
+   38 Saida: ESCREVA STRING2 . FIMCOMANDO Corpo
+
+    FIMCOMANDO  deslocar, e ir ao estado 46
+
+
+Estado 27
+
+   12 Tipo: VARIAVEL .
+
+    $padrão  reduzir usando a regra 12 (Tipo)
+
+
+Estado 28
+
+   36 Entrada: LEIA Tipo . FIMCOMANDO Corpo
+
+    FIMCOMANDO  deslocar, e ir ao estado 47
+
+
+Estado 29
+
+   34 Condicao: IF ABREP . Relacional FECHAP ABREC Corpo FECHAC Corpo
+
+    INTEIRO   deslocar, e ir ao estado 3
+    REAL      deslocar, e ir ao estado 4
+    VARIAVEL  deslocar, e ir ao estado 27
+
+    Tipo        ir ao estado 48
+    Relacional  ir ao estado 49
+
+
+Estado 30
+
+   35 Repeticao: WHILE ABREP . Relacional FECHAP ABREC Corpo FECHAC
+
+    INTEIRO   deslocar, e ir ao estado 3
+    REAL      deslocar, e ir ao estado 4
+    VARIAVEL  deslocar, e ir ao estado 27
+
+    Tipo        ir ao estado 48
+    Relacional  ir ao estado 50
+
+
+Estado 31
+
+   17 Declaracao: TIPOINT VARIAVEL . Declaracao2
+
+    OPATRIBUICAO  deslocar, e ir ao estado 51
+    FIMCOMANDO    deslocar, e ir ao estado 52
+
+    Declaracao2  ir ao estado 53
+
+
+Estado 32
+
+   19 Declaracao: TIPOCHAR VARIAVEL . Declaracao2
+
+    OPATRIBUICAO  deslocar, e ir ao estado 51
+    FIMCOMANDO    deslocar, e ir ao estado 52
+
+    Declaracao2  ir ao estado 54
+
+
+Estado 33
+
+   18 Declaracao: TIPOREAL VARIAVEL . Declaracao2
+
+    OPATRIBUICAO  deslocar, e ir ao estado 51
+    FIMCOMANDO    deslocar, e ir ao estado 52
+
+    Declaracao2  ir ao estado 55
+
+
+Estado 34
+
+    1 Programa: FUNCTION Corpo ENDFUNCTION .
+
+    $padrão  reduzir usando a regra 1 (Programa)
+
+
+Estado 35
+
+   23 Expressao: Tipo OPSOMA . Tipo
+
+    INTEIRO   deslocar, e ir ao estado 3
+    REAL      deslocar, e ir ao estado 4
+    VARIAVEL  deslocar, e ir ao estado 27
+
+    Tipo  ir ao estado 56
+
+
+Estado 36
+
+   24 Expressao: Tipo OPSUBTRACAO . Tipo
+
+    INTEIRO   deslocar, e ir ao estado 3
+    REAL      deslocar, e ir ao estado 4
+    VARIAVEL  deslocar, e ir ao estado 27
+
+    Tipo  ir ao estado 57
+
+
+Estado 37
+
+   25 Expressao: Tipo OPMULTIPLICACAO . Tipo
+
+    INTEIRO   deslocar, e ir ao estado 3
+    REAL      deslocar, e ir ao estado 4
+    VARIAVEL  deslocar, e ir ao estado 27
+
+    Tipo  ir ao estado 58
+
+
+Estado 38
+
+   26 Expressao: Tipo OPDIVISAO . Tipo
+
+    INTEIRO   deslocar, e ir ao estado 3
+    REAL      deslocar, e ir ao estado 4
+    VARIAVEL  deslocar, e ir ao estado 27
+
+    Tipo  ir ao estado 59
+
+
+Estado 39
+
+   27 Expressao: Tipo OPMOD . Tipo
+
+    INTEIRO   deslocar, e ir ao estado 3
+    REAL      deslocar, e ir ao estado 4
+    VARIAVEL  deslocar, e ir ao estado 27
+
+    Tipo  ir ao estado 60
+
+
+Estado 40
+
+   22 Calculo: Expressao FIMCOMANDO . Corpo
+
+    INTEIRO   deslocar, e ir ao estado 3
+    REAL      deslocar, e ir ao estado 4
+    VARIAVEL  deslocar, e ir ao estado 5
+    ESCREVA   deslocar, e ir ao estado 6
+    LEIA      deslocar, e ir ao estado 7
+    IF        deslocar, e ir ao estado 8
+    WHILE     deslocar, e ir ao estado 9
+    TIPOINT   deslocar, e ir ao estado 10
+    TIPOCHAR  deslocar, e ir ao estado 11
+    TIPOREAL  deslocar, e ir ao estado 12
+
+    $padrão  reduzir usando a regra 2 (Corpo)
+
+    Corpo       ir ao estado 61
+    Tipo        ir ao estado 14
+    Atribuicao  ir ao estado 15
+    Declaracao  ir ao estado 16
+    Calculo     ir ao estado 17
+    Expressao   ir ao estado 18
+    Condicao    ir ao estado 19
+    Repeticao   ir ao estado 20
+    Entrada     ir ao estado 21
+    Saida       ir ao estado 22
+
+
+Estado 41
+
+   16 Atri_num: Tipo . FIMCOMANDO Corpo
+   23 Expressao: Tipo . OPSOMA Tipo
+   24          | Tipo . OPSUBTRACAO Tipo
+   25          | Tipo . OPMULTIPLICACAO Tipo
+   26          | Tipo . OPDIVISAO Tipo
+   27          | Tipo . OPMOD Tipo
+
+    OPSOMA           deslocar, e ir ao estado 35
+    OPSUBTRACAO      deslocar, e ir ao estado 36
+    OPMULTIPLICACAO  deslocar, e ir ao estado 37
+    OPDIVISAO        deslocar, e ir ao estado 38
+    OPMOD            deslocar, e ir ao estado 39
+    FIMCOMANDO       deslocar, e ir ao estado 62
+
+
+Estado 42
+
+   13 Atribuicao: VARIAVEL OPATRIBUICAO TipoAtri .
+
+    $padrão  reduzir usando a regra 13 (Atribuicao)
+
+
+Estado 43
+
+   14 TipoAtri: Atri_num .
+
+    $padrão  reduzir usando a regra 14 (TipoAtri)
+
+
+Estado 44
+
+   15 TipoAtri: Calculo .
+
+    $padrão  reduzir usando a regra 15 (TipoAtri)
+
+
+Estado 45
+
+   37 Saida: ESCREVA STRING FIMCOMANDO . Corpo
+
+    INTEIRO   deslocar, e ir ao estado 3
+    REAL      deslocar, e ir ao estado 4
+    VARIAVEL  deslocar, e ir ao estado 5
+    ESCREVA   deslocar, e ir ao estado 6
+    LEIA      deslocar, e ir ao estado 7
+    IF        deslocar, e ir ao estado 8
+    WHILE     deslocar, e ir ao estado 9
+    TIPOINT   deslocar, e ir ao estado 10
+    TIPOCHAR  deslocar, e ir ao estado 11
+    TIPOREAL  deslocar, e ir ao estado 12
+
+    $padrão  reduzir usando a regra 2 (Corpo)
+
+    Corpo       ir ao estado 63
+    Tipo        ir ao estado 14
+    Atribuicao  ir ao estado 15
+    Declaracao  ir ao estado 16
+    Calculo     ir ao estado 17
+    Expressao   ir ao estado 18
+    Condicao    ir ao estado 19
+    Repeticao   ir ao estado 20
+    Entrada     ir ao estado 21
+    Saida       ir ao estado 22
+
+
+Estado 46
+
+   38 Saida: ESCREVA STRING2 FIMCOMANDO . Corpo
+
+    INTEIRO   deslocar, e ir ao estado 3
+    REAL      deslocar, e ir ao estado 4
+    VARIAVEL  deslocar, e ir ao estado 5
+    ESCREVA   deslocar, e ir ao estado 6
+    LEIA      deslocar, e ir ao estado 7
+    IF        deslocar, e ir ao estado 8
+    WHILE     deslocar, e ir ao estado 9
+    TIPOINT   deslocar, e ir ao estado 10
+    TIPOCHAR  deslocar, e ir ao estado 11
+    TIPOREAL  deslocar, e ir ao estado 12
+
+    $padrão  reduzir usando a regra 2 (Corpo)
+
+    Corpo       ir ao estado 64
+    Tipo        ir ao estado 14
+    Atribuicao  ir ao estado 15
+    Declaracao  ir ao estado 16
+    Calculo     ir ao estado 17
+    Expressao   ir ao estado 18
+    Condicao    ir ao estado 19
+    Repeticao   ir ao estado 20
+    Entrada     ir ao estado 21
+    Saida       ir ao estado 22
+
+
+Estado 47
+
+   36 Entrada: LEIA Tipo FIMCOMANDO . Corpo
+
+    INTEIRO   deslocar, e ir ao estado 3
+    REAL      deslocar, e ir ao estado 4
+    VARIAVEL  deslocar, e ir ao estado 5
+    ESCREVA   deslocar, e ir ao estado 6
+    LEIA      deslocar, e ir ao estado 7
+    IF        deslocar, e ir ao estado 8
+    WHILE     deslocar, e ir ao estado 9
+    TIPOINT   deslocar, e ir ao estado 10
+    TIPOCHAR  deslocar, e ir ao estado 11
+    TIPOREAL  deslocar, e ir ao estado 12
+
+    $padrão  reduzir usando a regra 2 (Corpo)
+
+    Corpo       ir ao estado 65
+    Tipo        ir ao estado 14
+    Atribuicao  ir ao estado 15
+    Declaracao  ir ao estado 16
+    Calculo     ir ao estado 17
+    Expressao   ir ao estado 18
+    Condicao    ir ao estado 19
+    Repeticao   ir ao estado 20
+    Entrada     ir ao estado 21
+    Saida       ir ao estado 22
+
+
+Estado 48
+
+   28 Relacional: Tipo . OPMAIORIGUAL Tipo
+   29           | Tipo . OPMAIOR Tipo
+   30           | Tipo . OPMENORIGUAL Tipo
+   31           | Tipo . OPMENOR Tipo
+   32           | Tipo . OPCOMPARACAO Tipo
+   33           | Tipo . OPDIFERENTE Tipo
+
+    OPCOMPARACAO  deslocar, e ir ao estado 66
+    OPMENORIGUAL  deslocar, e ir ao estado 67
+    OPMENOR       deslocar, e ir ao estado 68
+    OPMAIORIGUAL  deslocar, e ir ao estado 69
+    OPMAIOR       deslocar, e ir ao estado 70
+    OPDIFERENTE   deslocar, e ir ao estado 71
+
+
+Estado 49
+
+   34 Condicao: IF ABREP Relacional . FECHAP ABREC Corpo FECHAC Corpo
+
+    FECHAP  deslocar, e ir ao estado 72
+
+
+Estado 50
+
+   35 Repeticao: WHILE ABREP Relacional . FECHAP ABREC Corpo FECHAC
+
+    FECHAP  deslocar, e ir ao estado 73
+
+
+Estado 51
+
+   20 Declaracao2: OPATRIBUICAO . TipoAtri
+
+    INTEIRO   deslocar, e ir ao estado 3
+    REAL      deslocar, e ir ao estado 4
+    VARIAVEL  deslocar, e ir ao estado 27
+
+    Tipo       ir ao estado 41
+    TipoAtri   ir ao estado 74
+    Atri_num   ir ao estado 43
+    Calculo    ir ao estado 44
+    Expressao  ir ao estado 18
+
+
+Estado 52
+
+   21 Declaracao2: FIMCOMANDO .
+
+    $padrão  reduzir usando a regra 21 (Declaracao2)
+
+
+Estado 53
+
+   17 Declaracao: TIPOINT VARIAVEL Declaracao2 .
+
+    $padrão  reduzir usando a regra 17 (Declaracao)
+
+
+Estado 54
+
+   19 Declaracao: TIPOCHAR VARIAVEL Declaracao2 .
+
+    $padrão  reduzir usando a regra 19 (Declaracao)
+
+
+Estado 55
+
+   18 Declaracao: TIPOREAL VARIAVEL Declaracao2 .
+
+    $padrão  reduzir usando a regra 18 (Declaracao)
+
+
+Estado 56
+
+   23 Expressao: Tipo OPSOMA Tipo .
+
+    $padrão  reduzir usando a regra 23 (Expressao)
+
+
+Estado 57
+
+   24 Expressao: Tipo OPSUBTRACAO Tipo .
+
+    $padrão  reduzir usando a regra 24 (Expressao)
+
+
+Estado 58
+
+   25 Expressao: Tipo OPMULTIPLICACAO Tipo .
+
+    $padrão  reduzir usando a regra 25 (Expressao)
+
+
+Estado 59
+
+   26 Expressao: Tipo OPDIVISAO Tipo .
+
+    $padrão  reduzir usando a regra 26 (Expressao)
+
+
+Estado 60
+
+   27 Expressao: Tipo OPMOD Tipo .
+
+    $padrão  reduzir usando a regra 27 (Expressao)
+
+
+Estado 61
+
+   22 Calculo: Expressao FIMCOMANDO Corpo .
+
+    $padrão  reduzir usando a regra 22 (Calculo)
+
+
+Estado 62
+
+   16 Atri_num: Tipo FIMCOMANDO . Corpo
+
+    INTEIRO   deslocar, e ir ao estado 3
+    REAL      deslocar, e ir ao estado 4
+    VARIAVEL  deslocar, e ir ao estado 5
+    ESCREVA   deslocar, e ir ao estado 6
+    LEIA      deslocar, e ir ao estado 7
+    IF        deslocar, e ir ao estado 8
+    WHILE     deslocar, e ir ao estado 9
+    TIPOINT   deslocar, e ir ao estado 10
+    TIPOCHAR  deslocar, e ir ao estado 11
+    TIPOREAL  deslocar, e ir ao estado 12
+
+    $padrão  reduzir usando a regra 2 (Corpo)
+
+    Corpo       ir ao estado 75
+    Tipo        ir ao estado 14
+    Atribuicao  ir ao estado 15
+    Declaracao  ir ao estado 16
+    Calculo     ir ao estado 17
+    Expressao   ir ao estado 18
+    Condicao    ir ao estado 19
+    Repeticao   ir ao estado 20
+    Entrada     ir ao estado 21
+    Saida       ir ao estado 22
+
+
+Estado 63
+
+   37 Saida: ESCREVA STRING FIMCOMANDO Corpo .
+
+    $padrão  reduzir usando a regra 37 (Saida)
+
+
+Estado 64
+
+   38 Saida: ESCREVA STRING2 FIMCOMANDO Corpo .
+
+    $padrão  reduzir usando a regra 38 (Saida)
+
+
+Estado 65
+
+   36 Entrada: LEIA Tipo FIMCOMANDO Corpo .
+
+    $padrão  reduzir usando a regra 36 (Entrada)
+
+
+Estado 66
+
+   32 Relacional: Tipo OPCOMPARACAO . Tipo
+
+    INTEIRO   deslocar, e ir ao estado 3
+    REAL      deslocar, e ir ao estado 4
+    VARIAVEL  deslocar, e ir ao estado 27
+
+    Tipo  ir ao estado 76
+
+
+Estado 67
+
+   30 Relacional: Tipo OPMENORIGUAL . Tipo
+
+    INTEIRO   deslocar, e ir ao estado 3
+    REAL      deslocar, e ir ao estado 4
+    VARIAVEL  deslocar, e ir ao estado 27
+
+    Tipo  ir ao estado 77
+
+
+Estado 68
+
+   31 Relacional: Tipo OPMENOR . Tipo
+
+    INTEIRO   deslocar, e ir ao estado 3
+    REAL      deslocar, e ir ao estado 4
+    VARIAVEL  deslocar, e ir ao estado 27
+
+    Tipo  ir ao estado 78
+
+
+Estado 69
+
+   28 Relacional: Tipo OPMAIORIGUAL . Tipo
+
+    INTEIRO   deslocar, e ir ao estado 3
+    REAL      deslocar, e ir ao estado 4
+    VARIAVEL  deslocar, e ir ao estado 27
+
+    Tipo  ir ao estado 79
+
+
+Estado 70
+
+   29 Relacional: Tipo OPMAIOR . Tipo
+
+    INTEIRO   deslocar, e ir ao estado 3
+    REAL      deslocar, e ir ao estado 4
+    VARIAVEL  deslocar, e ir ao estado 27
+
+    Tipo  ir ao estado 80
+
+
+Estado 71
+
+   33 Relacional: Tipo OPDIFERENTE . Tipo
+
+    INTEIRO   deslocar, e ir ao estado 3
+    REAL      deslocar, e ir ao estado 4
+    VARIAVEL  deslocar, e ir ao estado 27
+
+    Tipo  ir ao estado 81
+
+
+Estado 72
+
+   34 Condicao: IF ABREP Relacional FECHAP . ABREC Corpo FECHAC Corpo
+
+    ABREC  deslocar, e ir ao estado 82
+
+
+Estado 73
+
+   35 Repeticao: WHILE ABREP Relacional FECHAP . ABREC Corpo FECHAC
+
+    ABREC  deslocar, e ir ao estado 83
+
+
+Estado 74
+
+   20 Declaracao2: OPATRIBUICAO TipoAtri .
+
+    $padrão  reduzir usando a regra 20 (Declaracao2)
+
+
+Estado 75
+
+   16 Atri_num: Tipo FIMCOMANDO Corpo .
+
+    $padrão  reduzir usando a regra 16 (Atri_num)
+
+
+Estado 76
+
+   32 Relacional: Tipo OPCOMPARACAO Tipo .
+
+    $padrão  reduzir usando a regra 32 (Relacional)
+
+
+Estado 77
+
+   30 Relacional: Tipo OPMENORIGUAL Tipo .
+
+    $padrão  reduzir usando a regra 30 (Relacional)
+
+
+Estado 78
+
+   31 Relacional: Tipo OPMENOR Tipo .
+
+    $padrão  reduzir usando a regra 31 (Relacional)
+
+
+Estado 79
+
+   28 Relacional: Tipo OPMAIORIGUAL Tipo .
+
+    $padrão  reduzir usando a regra 28 (Relacional)
+
+
+Estado 80
+
+   29 Relacional: Tipo OPMAIOR Tipo .
+
+    $padrão  reduzir usando a regra 29 (Relacional)
+
+
+Estado 81
+
+   33 Relacional: Tipo OPDIFERENTE Tipo .
+
+    $padrão  reduzir usando a regra 33 (Relacional)
+
+
+Estado 82
+
+   34 Condicao: IF ABREP Relacional FECHAP ABREC . Corpo FECHAC Corpo
+
+    INTEIRO   deslocar, e ir ao estado 3
+    REAL      deslocar, e ir ao estado 4
+    VARIAVEL  deslocar, e ir ao estado 5
+    ESCREVA   deslocar, e ir ao estado 6
+    LEIA      deslocar, e ir ao estado 7
+    IF        deslocar, e ir ao estado 8
+    WHILE     deslocar, e ir ao estado 9
+    TIPOINT   deslocar, e ir ao estado 10
+    TIPOCHAR  deslocar, e ir ao estado 11
+    TIPOREAL  deslocar, e ir ao estado 12
+
+    $padrão  reduzir usando a regra 2 (Corpo)
+
+    Corpo       ir ao estado 84
+    Tipo        ir ao estado 14
+    Atribuicao  ir ao estado 15
+    Declaracao  ir ao estado 16
+    Calculo     ir ao estado 17
+    Expressao   ir ao estado 18
+    Condicao    ir ao estado 19
+    Repeticao   ir ao estado 20
+    Entrada     ir ao estado 21
+    Saida       ir ao estado 22
+
+
+Estado 83
+
+   35 Repeticao: WHILE ABREP Relacional FECHAP ABREC . Corpo FECHAC
+
+    INTEIRO   deslocar, e ir ao estado 3
+    REAL      deslocar, e ir ao estado 4
+    VARIAVEL  deslocar, e ir ao estado 5
+    ESCREVA   deslocar, e ir ao estado 6
+    LEIA      deslocar, e ir ao estado 7
+    IF        deslocar, e ir ao estado 8
+    WHILE     deslocar, e ir ao estado 9
+    TIPOINT   deslocar, e ir ao estado 10
+    TIPOCHAR  deslocar, e ir ao estado 11
+    TIPOREAL  deslocar, e ir ao estado 12
+
+    $padrão  reduzir usando a regra 2 (Corpo)
+
+    Corpo       ir ao estado 85
+    Tipo        ir ao estado 14
+    Atribuicao  ir ao estado 15
+    Declaracao  ir ao estado 16
+    Calculo     ir ao estado 17
+    Expressao   ir ao estado 18
+    Condicao    ir ao estado 19
+    Repeticao   ir ao estado 20
+    Entrada     ir ao estado 21
+    Saida       ir ao estado 22
+
+
+Estado 84
+
+   34 Condicao: IF ABREP Relacional FECHAP ABREC Corpo . FECHAC Corpo
+
+    FECHAC  deslocar, e ir ao estado 86
+
+
+Estado 85
+
+   35 Repeticao: WHILE ABREP Relacional FECHAP ABREC Corpo . FECHAC
+
+    FECHAC  deslocar, e ir ao estado 87
+
+
+Estado 86
+
+   34 Condicao: IF ABREP Relacional FECHAP ABREC Corpo FECHAC . Corpo
+
+    INTEIRO   deslocar, e ir ao estado 3
+    REAL      deslocar, e ir ao estado 4
+    VARIAVEL  deslocar, e ir ao estado 5
+    ESCREVA   deslocar, e ir ao estado 6
+    LEIA      deslocar, e ir ao estado 7
+    IF        deslocar, e ir ao estado 8
+    WHILE     deslocar, e ir ao estado 9
+    TIPOINT   deslocar, e ir ao estado 10
+    TIPOCHAR  deslocar, e ir ao estado 11
+    TIPOREAL  deslocar, e ir ao estado 12
+
+    $padrão  reduzir usando a regra 2 (Corpo)
+
+    Corpo       ir ao estado 88
+    Tipo        ir ao estado 14
+    Atribuicao  ir ao estado 15
+    Declaracao  ir ao estado 16
+    Calculo     ir ao estado 17
+    Expressao   ir ao estado 18
+    Condicao    ir ao estado 19
+    Repeticao   ir ao estado 20
+    Entrada     ir ao estado 21
+    Saida       ir ao estado 22
+
+
+Estado 87
+
+   35 Repeticao: WHILE ABREP Relacional FECHAP ABREC Corpo FECHAC .
+
+    $padrão  reduzir usando a regra 35 (Repeticao)
+
+
+Estado 88
+
+   34 Condicao: IF ABREP Relacional FECHAP ABREC Corpo FECHAC Corpo .
+
+    $padrão  reduzir usando a regra 34 (Condicao)

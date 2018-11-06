@@ -1,10 +1,27 @@
 function
 
-	i nota = 7.
+	i var = 5.
 
-	if(nota >: 7)
+	out &inicial.
+	out #var.
+	if(var < 10)
 	{
-		out &PASSAMOTHATY.
+		var = var + 10.
+		out &primeiro.
+		out #var.
+
+		while(var < 100){
+			var = var + 10.
+			out &Loop.
+			out #var.
+		}
+	}
+
+	if(var > 100)
+	{
+		var = var + 10.
+		out &primeiro.
+		out #var.
 	}
 
 endfunction

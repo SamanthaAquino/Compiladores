@@ -165,12 +165,12 @@
 				break;
 			case STRING:
 				yylval.var = yylval.var + 1;
-				fprintf(arq,"(\"%%d\", %s)", yylval.var);
+				fprintf(arq,"(\"%%d \\n \", %s)", yylval.var);
 				fprintf(arqtoken,"%s\t\t\t\t%d\t\t\t\t\n",tokname(tok), EM_tokPos);
 				break;
 			case STRING2:
 				yylval.var = yylval.var + 1;
-				fprintf(arq,"(\"%s\")", yylval.var);
+				fprintf(arq,"(\"%s \\n \")", yylval.var);
 				fprintf(arqtoken, "%s\t\t\t\t%d\t\t\t\t\n", tokname(tok), EM_tokPos);
 				break;
 			default:

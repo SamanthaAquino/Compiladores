@@ -83,14 +83,13 @@
 %type<atual> Repeticao
 %type<atual> Entrada
 %type<atual> Saida
-%type<atual> Retorna
 
 
 %%
 
-Programa : FUNCTION Corpo Retorna { printf("Programa executado com sucesso\n"); exit(0); } ;
+Programa : FUNCTION Corpo ENDFUNCTION { printf("Programa executado com sucesso\n"); exit(0); } ;
 
-Corpo: Calculo | Atribuicao | Declaracao | Condicao | Repeticao | Entrada | Saida;
+Corpo: | Calculo | Atribuicao | Declaracao | Condicao | Repeticao | Entrada | Saida;
 
 Tipo: INTEIRO  { $$ = (No*)malloc(sizeof(No));
 				  $$->num = INTEIRO;
@@ -233,7 +232,7 @@ Relacional: Tipo OPMAIORIGUAL Tipo { $$ = (No*)malloc(sizeof(No));
 		  							$$->lookahead2 = NULL;
 		                          };
 
-Condicao: IF ABREP Relacional FECHAP ABREC Corpo FECHAC { $$ = (No*)malloc(sizeof(No));
+Condicao: IF ABREP Relacional FECHAP ABREC Corpo FECHAC Corpo { $$ = (No*)malloc(sizeof(No));
 											$$->num = IF;
 											$$->esq = $6;
 											$$->dir = NULL;
@@ -249,7 +248,7 @@ Repeticao: WHILE ABREP Relacional FECHAP ABREC Corpo FECHAC { $$ = (No*)malloc(s
 											   $$->lookahead2 = NULL;
 											 };
 
-Entrada: LEIA Tipo FIMCOMANDO{ $$ = (No*)malloc(sizeof(No));
+Entrada: LEIA Tipo FIMCOMANDO Corpo{ $$ = (No*)malloc(sizeof(No));
 							$$->num = LEIA;
 							$$->esq = $2;
 							$$->dir = NULL;
@@ -257,25 +256,17 @@ Entrada: LEIA Tipo FIMCOMANDO{ $$ = (No*)malloc(sizeof(No));
 							$$->lookahead2 = NULL;
 						  };
 
-Saida: ESCREVA STRING FIMCOMANDO { $$ = (No*)malloc(sizeof(No));
+Saida: ESCREVA STRING FIMCOMANDO Corpo { $$ = (No*)malloc(sizeof(No));
 							$$->num = ESCREVA;
 							$$->esq = NULL;
 							$$->dir = NULL;
 							$$->lookahead1 = NULL;
 							$$->lookahead2 = NULL;
 						  };
-	| ESCREVA STRING2 FIMCOMANDO { $$ = (No*)malloc(sizeof(No));
+	| ESCREVA STRING2 FIMCOMANDO Corpo { $$ = (No*)malloc(sizeof(No));
 									$$->num = ESCREVA;
 								    $$->esq = NULL;
 									$$->dir = NULL;
 									$$->lookahead1 = NULL;
 									$$->lookahead2 = NULL;
 								 };
-
-Retorna: ENDFUNCTION { $$ = (No*)malloc(sizeof(No));
-						  $$->num = ENDFUNCTION;
-						  $$->esq = NULL;
-						  $$->dir = NULL;
-						  $$->lookahead1 = NULL;
-						  $$->lookahead2 = NULL;
-						};
