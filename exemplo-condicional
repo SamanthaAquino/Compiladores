@@ -1,21 +1,23 @@
-function
+function 
 
-	r nota1 = 6.
-	r nota2 = 5.
+	i nota1 = 4. 
+	i nota2 = 8.
 
-	i media = nota1+nota2.
-	media = media/2.
+	i final = nota1 + nota2.
+	final = final/2.
 
-	if (media < 6,0)
+	if (final < 6,0)
 	{
-		out #media.
-		out &Exame.
+		out &Aluno.
+		out &EXAME.
+		out #final.
 	}
-
-	if (media >: 6,0)
+	
+	if (final >: 6,0)
 	{
-		out #media.
-		out &Aprovado.
+		out &Aluno.
+		out &APROVADO.
+		out #final.
 	}
 
 endfunction
