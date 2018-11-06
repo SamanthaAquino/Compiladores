@@ -1,0 +1,17 @@
+function
+
+	i cont = 0.
+	i grau = 10.
+	i fator = 5.
+	i prog = 0.
+
+	while (cont < grau)
+	{
+		prog = prog + fator.
+		cont = cont + 1.
+
+		out #prog.
+	}
+
+
+endfunction
